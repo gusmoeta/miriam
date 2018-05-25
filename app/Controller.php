@@ -96,7 +96,7 @@
 		}
 
 		if (!is_uploaded_file($_FILES['imagen_ali']['tmp_name'])) {
-            echo "hola";
+            echo "hola";///////
 		}else{
             move_uploaded_file($_FILES['imagen_ali']['tmp_name'], DIRECTORIO . $_FILES['imagen_ali']['name']);
             $nombre_img = DIRECTORIO . $_FILES['imagen_ali']['name'];
