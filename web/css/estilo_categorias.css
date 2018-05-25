@@ -1,0 +1,58 @@
+.cards {
+  width: 100%;
+  min-height: 200px;
+  background: #fcfcfc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.23);
+  overflow: hidden;
+  margin-bottom: 10px; }
+
+.card_list {
+  padding: 0.5rem;
+  list-style-type: none; }
+
+.card_item_cat {
+  margin: 4px;
+  padding: 1rem 0.3rem;
+  border-top: 4px solid #757575;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background: #f2f2f2;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 24%;
+  height: 15%;
+  float: left; }
+
+.negro {
+  border-top-color: #689F38; }
+
+.negro:hover .info-nombre_categoria, .negro:hover .info-dias {
+  color: #689F38; }
+
+.card_item:hover {
+  background: #BDBDBD; }
+
+.card_item:hover .info-foto {
+  transform: scale(1.1); }
+
+.card_info_cat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+.card_info_cat .info-alimento {
+  display: flex;
+  align-items: center; }
+
+.card_info_cat .info-nombre_categoria {
+  line-height: 1.1;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center; }
+
+@media screen and (max-width: 950px) {
+  .card_item_cat {
+    width: 100%;
+    height: 100%;
+    float: none; } }
+
+/*# sourceMappingURL=estilo_categorias.css.map */

@@ -1,0 +1,101 @@
+$primary-color-dark:   #689F38
+$primary-color:        #8BC34A
+$primary-color-light:  #DCEDC8
+$primary-color-text:   #212121
+$accent-color:         #FF5722
+$primary-text-color:   #212121
+$secondary-text-color: #757575
+$divider-color:        #BDBDBD
+$white: #f2f2f2
+$error: #D32F2F
+
+$borde: 2px
+$font-family: "Roboto", Arial
+
+/**
+	margin: 0
+	padding: 0
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box*/
+
+div.contenedor_form
+	//width: 90%
+	//max-width: 500px
+	//padding: 40px
+	margin: auto
+	background: #fff
+	box-shadow: 0px 0px 3px grey
+	//margin-top: 50px
+
+div.wrap_form
+	width: 100%
+	color: $white
+	padding: 80px 100px
+	.formulario
+		width: 100%
+		margin: auto
+		.input-group
+			position: relative
+			margin-bottom: 35px
+			&:first-of-type
+				//margin-top: 28px
+			input[type="text"],
+			input[type="date"],
+			select
+				font-family: $font-family
+				font-size: 15px
+				color: #898989
+				width: 100%
+				padding: 15px 0
+				outline: none
+				border: none
+				background: none
+				border-bottom: 0.8px solid $primary-color-light
+				&:focus,
+				&:active
+					outline: none
+					border-bottom: $borde solid $primary-color
+				&.error
+					border-bottom: $borde solid $error
+					+ label
+						color: $error
+			label
+				color: $primary-text-color
+				&.label
+					position: absolute
+					//margin-left: 16px
+					-webkit-transition: all .3s ease
+					-o-transition: all .3s ease
+					transition: all .3s ease				
+					top: -15px
+					font-size: 15px
+					line-heigth: 15px
+					margin-left: 2px
+					color: $primary-text-color
+		input[type="submit"]
+			//margin: 0 30%
+			background: $primary-color
+			border-radius: 1px
+			border: $borde solid $white
+			color: $white
+			cursor: pointer
+			display: inline-block
+			padding: 8px
+			width: 100%
+			font-family: $font-family
+			font-size: 16px
+			-webkit-transition: all .3s ease
+			-o-transition: all .3s ease
+			transition: all .3s ease
+			&:hover
+				background: $primary-color-dark
+		input[type="file"]
+			margin-top: 5px
+
+.error
+	color: $error
+
+@media screen and (max-width: 950px)
+	div.wrap_form
+		padding: 40px 15px

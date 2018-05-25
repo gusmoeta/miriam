@@ -1,0 +1,6 @@
+#
+app/vendor/
+app/composer.json
+app/composer.lock
+app/GoogleAuth.php
+sql_caduca2.txt

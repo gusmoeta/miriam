@@ -1,0 +1,185 @@
+$primary-color-dark:   #689F38
+$primary-color:        #8BC34A
+$primary-color-light:  #DCEDC8
+$primary-color-text:   #212121
+$accent-color:         #FF5722
+$primary-text-color:   #212121
+$secondary-text-color: #757575
+$divider-color:        #BDBDBD
+$white: #f2f2f2
+$error: #D32F2F
+
+$primary: #8bc349 
+$ligth-primary: #cbedb8
+$divider: #aaaaaa
+$desta: #338b7f
+
+$borde: 2px
+$font-family: "Roboto", Arial
+
+*
+	margin: 0
+	padding: 0
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+
+
+body
+	background: $white
+	font-family: $font-family
+	border-top: 30px solid $primary-color
+
+
+div.tabs
+	width: 90%
+	max-width: 500px
+	padding: 40px
+	margin: auto
+	background: #fff
+	box-shadow: 0px 0px 3px grey
+	//margin-top: 50px
+
+div.tabs
+	width: 100%
+	color: $white
+	padding: 50px
+	.formulario
+		width: 100%
+		margin: auto
+		.input-group
+			position: relative
+			margin-bottom: 25px
+			&:first-of-type
+				margin-top: 28px
+			input[type="text"],
+			input[type="email"],
+			input[type="password"],
+				font-family: $font-family
+				font-size: 15px
+				color: #898989
+				width: 100%
+				padding: 15px 0
+				outline: none
+				border: none
+				background: none
+				border-bottom: 0.8px solid $primary-color-light
+				&:focus,
+				&:active
+					outline: none
+					border-bottom: $borde solid $primary-color
+				&.error
+					border-bottom: $borde solid $error
+					+ label
+						color: $error
+			label
+				color: $primary-text-color
+				&.label
+					position: absolute
+					top: 16px
+					left: 0
+					font-size: 15px
+					line-heigth: 16px
+					//margin-left: 16px
+					-webkit-transition: all .3s ease
+					-o-transition: all .3s ease
+					transition: all .3s ease
+					&.active
+						top: -12px
+						font-size: 12px
+						line-heigth: 12px
+						//margin-left: 12px
+						color: $secondary-text-color
+		input[type="submit"]
+			background: $primary-color
+			border-radius: 1px
+			border: $borde solid $white
+			color: $white
+			cursor: pointer
+			display: inline-block
+			padding: 15px
+			width: 100%
+			font-family: $font-family
+			font-size: 16px
+			-webkit-transition: all .3s ease
+			-o-transition: all .3s ease
+			transition: all .3s ease
+			&:hover
+				background: $primary-color-light
+
+
+
+
+
+
+/////
+
+.social-login
+	//position: relative
+	//float: left
+	width: 100%
+	height: auto
+	padding: 10px 0 15px 0
+	//border-bottom: 1px solid #eee
+
+.social-login a
+	//position: relative
+	//float: left
+	//width: calc(40% - 8px)
+	text-decoration: none
+	color: #fff
+	text-align: center
+	background: #E15942
+	border-radius: 1px
+	border: $borde solid $white
+	cursor: pointer
+	display: inline-block
+	padding: 15px
+	width: 100%
+	font-family: $font-family
+	font-size: 15px
+	-webkit-transition: all .3s ease
+	-o-transition: all .3s ease
+	transition: all .3s ease
+
+.social-login a i
+	//position: relative
+	float: left
+	width: 20px
+	top: 2px
+
+/////
+
+ul.tabs 
+	margin: 0
+	padding: 0
+	list-style: none
+	border-bottom: solid 1px $primary-color
+
+
+ul.tabs li 
+	display: inline-block
+	width: 49%
+	padding: 15px
+	text-align: center
+	text-transform: uppercase
+	cursor: pointer
+
+
+ul.tabs li.current 
+	font-weight: bold
+	color: $primary-text-color
+	box-shadow: inset 0 -3px 0 0 $primary-color-dark
+	-webkit-box-shadow: inset 0 -3px 0 0 $primary-color-dark
+	-moz-box-shadow: inset 0 -3px 0 0 $primary-color-dark
+
+ul.tabs a
+	text-decoration: none
+	color: $secondary-text-color
+
+
+
+
+
+.error
+	color: $error

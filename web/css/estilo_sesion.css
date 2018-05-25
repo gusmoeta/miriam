@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background: #f2f2f2;
+  font-family: "Roboto", Arial;
+  border-top: 30px solid #8BC34A; }
+
+div.tabs {
+  width: 90%;
+  max-width: 500px;
+  padding: 40px;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0px 0px 3px grey; }
+
+div.tabs {
+  width: 100%;
+  color: #f2f2f2;
+  padding: 50px; }
+  div.tabs .formulario {
+    width: 100%;
+    margin: auto; }
+    div.tabs .formulario .input-group {
+      position: relative;
+      margin-bottom: 25px; }
+      div.tabs .formulario .input-group:first-of-type {
+        margin-top: 28px; }
+      div.tabs .formulario .input-group input[type="text"],
+      div.tabs .formulario .input-group input[type="email"],
+      div.tabs .formulario .input-group input[type="password"] {
+        font-family: "Roboto", Arial;
+        font-size: 15px;
+        color: #898989;
+        width: 100%;
+        padding: 15px 0;
+        outline: none;
+        border: none;
+        background: none;
+        border-bottom: 0.8px solid #DCEDC8; }
+        div.tabs .formulario .input-group input[type="text"]:focus, div.tabs .formulario .input-group input[type="text"]:active,
+        div.tabs .formulario .input-group input[type="email"]:focus,
+        div.tabs .formulario .input-group input[type="email"]:active,
+        div.tabs .formulario .input-group input[type="password"]:focus,
+        div.tabs .formulario .input-group input[type="password"]:active {
+          outline: none;
+          border-bottom: 2px solid #8BC34A; }
+        div.tabs .formulario .input-group input[type="text"].error,
+        div.tabs .formulario .input-group input[type="email"].error,
+        div.tabs .formulario .input-group input[type="password"].error {
+          border-bottom: 2px solid #D32F2F; }
+          div.tabs .formulario .input-group input[type="text"].error + label,
+          div.tabs .formulario .input-group input[type="email"].error + label,
+          div.tabs .formulario .input-group input[type="password"].error + label {
+            color: #D32F2F; }
+      div.tabs .formulario .input-group label {
+        color: #212121; }
+        div.tabs .formulario .input-group label.label {
+          position: absolute;
+          top: 16px;
+          left: 0;
+          font-size: 15px;
+          line-heigth: 16px;
+          -webkit-transition: all 0.3s ease;
+          -o-transition: all 0.3s ease;
+          transition: all 0.3s ease; }
+          div.tabs .formulario .input-group label.label.active {
+            top: -12px;
+            font-size: 12px;
+            line-heigth: 12px;
+            color: #757575; }
+    div.tabs .formulario input[type="submit"] {
+      background: #8BC34A;
+      border-radius: 1px;
+      border: 2px solid #f2f2f2;
+      color: #f2f2f2;
+      cursor: pointer;
+      display: inline-block;
+      padding: 15px;
+      width: 100%;
+      font-family: "Roboto", Arial;
+      font-size: 16px;
+      -webkit-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      div.tabs .formulario input[type="submit"]:hover {
+        background: #DCEDC8; }
+
+.social-login {
+  width: 100%;
+  height: auto;
+  padding: 10px 0 15px 0; }
+
+.social-login a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  background: #E15942;
+  border-radius: 1px;
+  border: 2px solid #f2f2f2;
+  cursor: pointer;
+  display: inline-block;
+  padding: 15px;
+  width: 100%;
+  font-family: "Roboto", Arial;
+  font-size: 15px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+
+.social-login a i {
+  float: left;
+  width: 20px;
+  top: 2px; }
+
+ul.tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: solid 1px #8BC34A; }
+
+ul.tabs li {
+  display: inline-block;
+  width: 49%;
+  padding: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer; }
+
+ul.tabs li.current {
+  font-weight: bold;
+  color: #212121;
+  box-shadow: inset 0 -3px 0 0 #689F38;
+  -webkit-box-shadow: inset 0 -3px 0 0 #689F38;
+  -moz-box-shadow: inset 0 -3px 0 0 #689F38; }
+
+ul.tabs a {
+  text-decoration: none;
+  color: #757575; }
+
+.error {
+  color: #D32F2F; }
+
+/*# sourceMappingURL=estilo_sesion.css.map */
