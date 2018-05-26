@@ -13,9 +13,15 @@
   padding: 0.5rem 0.5rem;
   border-top: 4px solid #757575;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background: #f2f2f2;
+  background: white;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+
+.tipoAzul {
+  display: inline-block; }
+
+.tipoImg {
+  width: 20px; }
 
 .naranja {
   border-top-color: #F57C00; }
@@ -36,6 +42,16 @@
 
 .azul:hover .info-nombre_alimento, .azul:hover .info-dias {
   color: #303F9F; }
+
+.verde {
+  border-top-color: #689F38; }
+
+.verde p.info-foto {
+  background: #689F38;
+  text-shadow: 1px 1px rgba(150, 69, 10, 0), 2px 2px #ff7f13, 3px 3px #ff8514, 4px 4px #ff8714, 5px 5px #ff8814, 6px 6px #ff8914, 7px 7px #ff8a14, 8px 8px #ff8a14, 9px 9px #ff8a14, 10px 10px #ff8b14, 11px 11px #ff8b14, 12px 12px #ff8b14, 13px 13px #ff8b14, 14px 14px #ff8b14, 15px 15px #ff8b14, 16px 16px #ff8b14, 17px 17px #ff8b14, 18px 18px #ff8b15, 19px 19px #ff8b15, 20px 20px #ff8c15; }
+
+.verde:hover .info-nombre_alimento, .naranja:hover .info-dias {
+  color: #689F38; }
 
 .azulclaro {
   border-top-color: #0288D1; }
