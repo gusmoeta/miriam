@@ -103,10 +103,26 @@ class Model{
         return $res;
     }
 
+    //2 funciontes hermanas
+    //en el execute no se controla la fecha, supongo q no es necesario?
+    //abajo el insertado tru no vale si no se retorna, usarolo o no y habrtia q controlar errores.....!!
     public function insertar_alimento($n, $c, $t, $fc, $f, $i){
         try{
             $sql = "insert into alimentos_users (nombre, id_categoria, id_tipo, fecha_caducidad, foto, id_usuario, id, fecha_reg_alimento) 
                     values (:n, :c, :t, '$fc', :f, :i, UUID(), curdate())";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute(array(":n" => $n, ":c" => $c, ":t" => $t, ":f" => $f, ":i" => $i));
+            $consulta->closeCursor();
+            $insertado = true;
+        } catch (Exception $e) {
+            die("Error: " . $e->getMessage());
+        }            
+    }
+    
+    public function insertar_alimento_ConFechaCongelado($n, $c, $t, $fc, $fcg, $f, $i){
+        try{
+            $sql = "insert into alimentos_users (nombre, id_categoria, id_tipo, fecha_caducidad, fecha_congelado,  foto, id_usuario, id, fecha_reg_alimento) 
+                    values (:n, :c, :t, '$fc', '$fcg', :f, :i, UUID(), curdate())";
             $consulta = $this->conexion->prepare($sql);
             $consulta->execute(array(":n" => $n, ":c" => $c, ":t" => $t, ":f" => $f, ":i" => $i));
             $consulta->closeCursor();

@@ -6,12 +6,12 @@
 					<form action="index.php?ctl=anadir_alimento" method="POST" class="formulario" name="formu" enctype="multipart/form-data">
 						<div>
 							<div class="input-group">
-								<input type="text" name="nombre_ali" id="nombre_ali" value="">
+								<input type="text" name="nombre_ali" id="nombre_ali" value="" placeholder="Nombre del alimento" autofocus>
 								<label class="label" for="nombre_ali">Nombre</label>
 							</div>
 							<div class="input-group">
-								<select name="categoria" id="categoria">
-									<option selected>Selecciona una categoría</option>	
+								<select name="categoria" id="categoria" required>
+									<option value="">Selecciona una Categoría</option>										
 									<?php foreach ($params['categorias'] as $categoria) :?>
 											<option value="<?php echo $categoria['id'] ?>"><?php echo ucfirst($categoria['nombre']) ?></option>
 									<?php endforeach; ?>								    
@@ -19,8 +19,8 @@
 								<label class="label" for="categoria">Categoria</label>
 							</div>
 							<div class="input-group">
-								<select name="tipo" id="tipo">
-									<option selected>Selecciona un tipo</option>
+								<select name="tipo" id="tipo" required>
+									<option value="">Selecciona un tipo</option>								
 									<?php foreach ($params['tipos'] as $tipo) :?>
 											<option value="<?php echo $tipo['id'] ?>"><?php echo ucfirst($tipo['nombre']) ?></option>
 									<?php endforeach; ?>
@@ -32,19 +32,21 @@
 								<label class="label" for="fecha_con">Fecha de congelado</label>
 							</div>
 							<div class="input-group">
-								<input type="date" name="fecha_cad" id="fecha_cad" value="">
+								<input type="date" name="fecha_cad" id="fecha_cad" value="" required>
 								<label class="label" for="fecha_cad">Fecha de caducidad</label>
 							</div>
 							<div class="input-group">
-								<input type="file" name="imagen_ali" id="imagen_ali">
+								<input type="file" name="imagen_ali" id="imagen_ali" required>
 								<label class="label" for="imagen_ali">Selecciona una imagen</label>
 							</div>
-							<div class="btn-input"  id="demo-success">
-								<input type="submit" value="Añadir" name="btn_anadir_ali"> <!-- id="btn_anadir_ali"  -->
+							<!-- <div class="btn-input"  id="demo-success"> -->
+							<div class="btn-input">
+								<input type="submit" value="Añadir" name="btn_anadir_ali"> 
+								<!-- id="btn_anadir_ali"  -->
 							</div>
 						</div>
 					</form>
-					<script>
+					<!-- <script>
 					$(".formulario").validate(
 						submitHandler: function() {
 								alert("submitted!");
@@ -61,7 +63,7 @@
 										delay: 4000 //number ms
 								});
 					});
-					</script>
+					</script> -->
 				</div>
 			</div>
 

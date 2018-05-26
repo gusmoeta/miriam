@@ -76,9 +76,24 @@
                 //$fecha_cad = date_format($fecha_format, 'Y-m-d');
 
                 $fecha_cad = date("Y-m-d", strtotime($_POST['fecha_cad']));
+                
+                
+                //quizas con uno solo valdria, solo habria q comporbar  si viene congelado vacio o no y si es vacio ponerlo a null
+                if( !isset($_POST['fecha_con']) || empty($_POST['fecha_con']) ){
+                    $conBD->insertar_alimento($_POST['nombre_ali'], $_POST['categoria'],
+                        $_POST['tipo'], $fecha_cad, $nombre_img, $_SESSION['id_usuario']);                          
+                }else{
 
-                $conBD->insertar_alimento($_POST['nombre_ali'], $_POST['categoria'],
-                        $_POST['tipo'], $fecha_cad, $nombre_img, $_SESSION['id_usuario']);      
+                    $fecha_con = date("Y-m-d", strtotime($_POST['fecha_con']));
+                    //si es congelado la fecha cad no importa, de momento ponemosuna fecha automatica por defecto
+                    //tb podria hacer el por defecto en la propia funcion
+                    $fecha_cad = "3000-01-01";
+
+                    $conBD->insertar_alimento_ConFechaCongelado($_POST['nombre_ali'], $_POST['categoria'],
+                        $_POST['tipo'], $fecha_cad, $fecha_con, $nombre_img, $_SESSION['id_usuario']);                          
+                        
+                }
+
                         // var_dump($_POST);
                         // var_dump($_POST['fecha_cad']);
                         // var_dump($fecha_cad);
