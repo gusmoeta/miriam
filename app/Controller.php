@@ -71,7 +71,7 @@
     //AÑADIR NUEVO ALIMENTO
     public function anadir_alimento(){
         $conBD = Model::singleton();
-        $params = array("titulo" => "Nuevo alimento", "tipos" => $conBD->get_tipos(), "categorias" => $conBD->get_categorias(),
+        $params = array("titulo" => "Nuevo alimento", "tipos" => $conBD->get_tipos(), "categorias" => $conBD->get_categorias($_SESSION['id_usuario']),
             /*'nombre' => '',
             'categoria' => '',
             'tipo' => '',
@@ -141,7 +141,13 @@
     }
 
     public function categorias(){
-        $params = array("titulo" => "Categorías");
+        $conBD = Model::singleton();
+        $params = array("titulo" => "Categorías", "categorias" => $conBD->get_categorias($_SESSION['id_usuario']),
+        );
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $conBD->insertar_categoria($_POST['nombre_cat'], $_SESSION['id_usuario']);
+            header('refresh:0;url=index.php?ctl=categorias');
+        }        
         require __DIR__ . '/templates/categorias.php';        
     }
 
