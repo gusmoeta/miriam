@@ -49,7 +49,7 @@
 								  $fecha_congelado = $alimento['fecha_congelado'];	
 								//   echo date('d/m/Y', strtotime($fecha_congelado));
 								$fecha_cad = $alimento['fecha_caducidad'];
-								echo $fecha_cad;
+								//echo $fecha_cad;
 								  $fecha_hoy = date("Y-m-d");
 								  $datetime1 = date_create($fecha_hoy);
 								  $datetime2 = date_create($fecha_cad);
@@ -61,7 +61,7 @@
 									<li class="card_item rojo" id="draggable">
 										<div class="card_info">
 											<div class="info-alimento">
-												<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+												<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 												<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 											</div>
 											<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i>  Hace <?php echo $interval->format('%a días'); ?></div>
@@ -77,7 +77,7 @@
 																<li class="card_item naranja" id="draggable">
 																	<div class="card_info">
 																		<div class="info-alimento">
-																			<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
@@ -88,7 +88,7 @@
 																<li class="card_item naranja" id="draggable">
 																	<div class="card_info">
 																		<div class="info-alimento">
-																			<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div>
@@ -99,7 +99,7 @@
 														<li class="card_item naranja" id="draggable">
 															<div class="card_info">
 																<div class="info-alimento">
-																	<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+																	<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																	<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																</div>
 																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
@@ -120,7 +120,7 @@
 																<li class="card_item verde" id="draggable">
 																	<div class="card_info">
 																		<div class="info-alimento">
-																			<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
@@ -131,7 +131,7 @@
 																<li class="card_item verde" id="draggable">
 																	<div class="card_info">
 																		<div class="info-alimento">
-																			<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div>
@@ -142,7 +142,7 @@
 														<li class="card_item verde" id="draggable">
 															<div class="card_info">
 																<div class="info-alimento">
-																	<img class="info-foto" src="<?php echo "../web/" . $alimento['foto'] ?>" alt="">
+																	<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																	<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																</div>
 																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>

@@ -124,7 +124,7 @@
             echo "hola";///////
 		}else{
             move_uploaded_file($_FILES['imagen_ali']['tmp_name'], DIRECTORIO . $_FILES['imagen_ali']['name']);
-            $nombre_img = DIRECTORIO . $_FILES['imagen_ali']['name'];
+            $nombre_img = $_FILES['imagen_ali']['name'];
             return $nombre_img;
         }        
     }
@@ -136,7 +136,10 @@
     }
 
     public function caducados(){
-        $params = array("titulo" => "Caducados");
+        $conBD = Model::singleton();
+        $params = array(
+            "titulo" => "Caducados", 
+            "resultado" => $conBD->get_alimentos($_SESSION['id_usuario']));
         require __DIR__ . '/templates/caducados.php';        
     }
 
