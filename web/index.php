@@ -17,6 +17,7 @@
      'comprobarUserGoogle'  => array('controller' =>'Controller','action' =>'comprobarUserGoogle'),
      'anadir_alimento'      => array('controller' =>'Controller','action' =>'anadir_alimento'),
      'filtrar'              => array('controller' =>'Controller','action' =>'filtrar'),
+     'filtrarDatos'         => array('controller' =>'Controller','action' =>'filtrarDatos'),
      'caducados'            => array('controller' =>'Controller','action' =>'caducados'),
      'categorias'           => array('controller' =>'Controller','action' =>'categorias'),
      'calendario'           => array('controller' =>'Controller','action' =>'calendario'),

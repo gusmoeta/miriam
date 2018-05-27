@@ -121,7 +121,40 @@
 
 
     public function filtrar(){
+        
         $params = array("titulo" => "Filtrar");
+        require __DIR__ . '/templates/filtrar.php';        
+    }
+    
+    public function filtrarDatos(){
+        $conBD = Model::singleton();
+
+        //decide camino
+        $numElementoEnArray = count($_REQUEST);
+
+        //solo cuatro posibilidades o 4 elementos
+        switch ($numElementoEnArray) {
+            case 1:
+                $params = array("titulo" => "FiltrarDatos1", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 1));
+                break;
+                
+                case 2:
+                $params = array("titulo" => "FiltrarDatos2", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 2));                
+                break;
+                
+                case 3:
+                $params = array("titulo" => "FiltrarDatos3", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 3));                
+                break;
+                
+                case 4:
+                $params = array("titulo" => "FiltrarDatos4", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 4));                
+                break;
+                
+                default:
+                # code...
+                break;
+        }
+
         require __DIR__ . '/templates/filtrar.php';        
     }
 

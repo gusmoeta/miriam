@@ -8,20 +8,22 @@
 </head>
 <body>
 
-<?php
 
-?>
-
+<!--
 <form action="probando2.php" method="post">
-
     <label class="label" for="fecha_con">Fecha de congelado</label>
-        <input type="date" name="fecha_con" id="fecha_con" value="">
-    
-  
-		<input type="submit" value="Añadir" name="btn_anadir_ali">
-							
+        <input type="date" name="fecha_con" id="fecha_con" value="">      
+		<input type="submit" value="Añadir" name="btn_anadir_ali">							
     </form>
                 
+-->
+
+<!-- Volver a template filtrar -->
+<form action="probando2.php" method="get">
+    <input type="hidden" name="filtrar">
+    <input type="submit" value="Volver">
+</form>
+
 
 
     
