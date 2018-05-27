@@ -39,16 +39,21 @@
             <div class="menu_bar">
                 <div class="tit1">
                         <p class="titulo"><?php echo $params['titulo'] ?></p>
-                    </div>
+                </div>                
                 <div class="botones">                    
                     <div class="trash_btn">
                         <a href="#" class="trash-icono"><i class="fas fa-trash"></i></a>
                     </div>
-
                     <div class="search_btn">
                         <a href="#" class="search-icono"><i class="fas fa-search"></i></a>
                     </div>
-                </div>                
+
+                </div>           
+                <div class="input-group buscar">
+                    <form action="index.php?ctl=buscar_alimento" method="POST">
+                        <input type="search" name="buscar" placeholder="Buscar alimento">
+                    </form>
+                    </div>     
                 <div class="menu_btn">
                     <a href="#" class="menu-icono"><i class="fas fa-bars"></i></a>
                 </div>                

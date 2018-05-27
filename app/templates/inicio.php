@@ -2,6 +2,13 @@
 
 				<!-- TARJETAS DE PRUEBA -->
 				<div class="cards">
+					<div class="content-buscar2">
+						<div class="input-group buscar2">
+							<form action="index.php?ctl=buscar_alimento" method="POST">
+								<input type="search" name="buscar" placeholder="Buscar alimento">
+							</form>
+						</div>
+					</div>
 					<ul class="card_list" id="card_list">
 						<!-- <li class="card_item naranja" id="draggable"> ui-widget-content
 							<div class="card_info">

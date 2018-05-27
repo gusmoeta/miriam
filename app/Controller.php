@@ -58,6 +58,16 @@
         require __DIR__ . '/templates/inicio.php';
     }
 
+    //búsqueda de alimentos
+    public function buscar_alimento(){
+        $conBD = Model::singleton();
+        $params = array(
+            "titulo" => "Inicio", 
+            "resultado" => $conBD->buscarAlimento($_POST['buscar'], $_SESSION['id_usuario']));
+
+        require __DIR__ . '/templates/inicio.php';
+    }
+
     //AÑADIR NUEVO ALIMENTO
     public function anadir_alimento(){
         $conBD = Model::singleton();

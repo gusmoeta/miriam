@@ -11,10 +11,11 @@
  // enrutamiento
  $map = array(
      'registro'             => array('controller' =>'Controller','action' =>'registro'),
-     'inicio'               => array('controller' =>'Controller','action' =>'inicio'),
      'identificacion'       => array('controller' =>'Controller','action' =>'identificacion'),          
      'comprobar_user'       => array('controller' =>'Controller','action' =>'comprobar_user'),
      'comprobarUserGoogle'  => array('controller' =>'Controller','action' =>'comprobarUserGoogle'),
+     'inicio'               => array('controller' =>'Controller','action' =>'inicio'),
+     'buscar_alimento'      => array('controller' =>'Controller','action' =>'buscar_alimento'),
      'anadir_alimento'      => array('controller' =>'Controller','action' =>'anadir_alimento'),
      'filtrar'              => array('controller' =>'Controller','action' =>'filtrar'),
      'caducados'            => array('controller' =>'Controller','action' =>'caducados'),

@@ -148,7 +148,24 @@ class Model{
         return $res;
     }
 
+    public function buscarAlimento($nombre, $id_user){       
+    
+        $sql = "select * from alimentos_users where nombre like concat(:nom,'%' ) and id_usuario = '$id_user'";  
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":nom" => $nombre));
+        $x = array();
 
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $x[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+
+        $consulta->closeCursor();
+        return $x;
+    }
 
 
     public function xx($n){
