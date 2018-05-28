@@ -3,14 +3,19 @@
  class Controller{
 
 
-    // public function registro() {
-    //     $conBD = Model::singleton();
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $conBD->inserta_usuario($_POST['nombre'], $_POST['email'], $_POST['pass']);      
-    //         //header('refresh:3;url=index.php?ctl=anadir_alimento');
-    //     }
-    //     require __DIR__ . '/templates/identificacion.php';        
-    // }
+    public function registro() {
+        $conBD = Model::singleton();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $conBD->inserta_usuario($_POST['nombre'], $_POST['email'], $_POST['pass']);      
+            //header('refresh:3;url=index.php?ctl=anadir_alimento');
+        }
+        require __DIR__ . '/templates/identificacion.php';        
+    }
+
+
+
+
+
 
     // public function identificacion($mensaje="") {        
     //     $mensaje;

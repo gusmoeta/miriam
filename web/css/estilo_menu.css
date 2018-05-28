@@ -33,7 +33,17 @@ header nav {
 header nav ul {
   overflow: hidden;
   list-style: none;
+  /*gus*/ 
 }
+
+/* @media screen and (max-width: 950px) {
+  #contenido {
+    min-width: 200px;
+   
+  } */
+
+
+
 
 /*header nav ul li {
   float: left;
@@ -69,7 +79,7 @@ header nav ul li a i {
 
 @media screen and (max-width: 950px) {
   header nav {
-    width: 75%;
+    width: 25%;
     height: 100%;
     margin: 0;
     position: fixed;
@@ -182,6 +192,8 @@ header nav ul li:first-child a:hover {
 
 
 
+
+
 /*CONTENIDO*/
 
 #contenido {
@@ -273,7 +285,7 @@ input[type="search"] {
     border-bottom: 0.8px solid #212121;
   }
 
-  input[type="search"]::plaeholder {
+  input[type="search"]::placeholder {
     color: #fcfcfc;
     width: 60%;
     padding: 5px 0;

@@ -8,6 +8,13 @@
   padding: 0.5rem;
   list-style-type: none; }
 
+@media screen and (max-width: 950px) {
+  .card_list {
+    padding: 0.5rem;
+    list-style-type: none;
+    width: 50%;
+    margin: auto;
+    min-width: 250px; } }
 .card_item {
   margin: 0 0 0.5rem;
   padding: 0.5rem 0.5rem;
@@ -108,7 +115,8 @@
   .card_info .info-nombre_alimento {
     line-height: 1.5;
     font-size: 14px;
-    margin: 0; }
+    margin: 0;
+    width: 50%; }
 
   .card_info .info-nombre_alimento small {
     font-size: 14px; }

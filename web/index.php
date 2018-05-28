@@ -15,7 +15,7 @@
 
  // enrutamiento
  $map = array(
-    // 'registro'             => array('controller' =>'Controller','action' =>'registro'),
+    'registro'             => array('controller' =>'Controller','action' =>'registro'),
    //  'identificacion'       => array('controller' =>'Controller','action' =>'identificacion'),   
     // 'comprobar_user'       => array('controller' =>'Controller','action' =>'comprobar_user'),
      'comprobarUserGoogle'  => array('controller' =>'Controller','action' =>'comprobarUserGoogle'),
@@ -40,7 +40,7 @@
 
     if( empty( $_SESSION['usuario']) ){     
 
-        $mensaje="";       
+        $mensaje="no estas identiudicasdlfjsl";       
        require_once '../app/templates/identificacion.php';
        
     }else{ //si session llena
