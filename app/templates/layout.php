@@ -39,16 +39,21 @@
             <div class="menu_bar">
                 <div class="tit1">
                         <p class="titulo"><?php echo $params['titulo'] ?></p>
-                    </div>
+                </div>                
                 <div class="botones">                    
                     <div class="trash_btn">
                         <a href="#" class="trash-icono"><i class="fas fa-trash"></i></a>
                     </div>
-
                     <div class="search_btn">
                         <a href="#" class="search-icono"><i class="fas fa-search"></i></a>
                     </div>
-                </div>                
+
+                </div>           
+                <div class="input-group buscar">
+                    <form action="index.php?ctl=buscar_alimento" method="POST">
+                        <input type="search" name="buscar" placeholder="Buscar alimento">
+                    </form>
+                    </div>     
                 <div class="menu_btn">
                     <a href="#" class="menu-icono"><i class="fas fa-bars"></i></a>
                 </div>                
@@ -56,15 +61,16 @@
             <!-- MENU LATERAL -->
             <nav>
                 <ul>
-                    <li><a href="index.php?ctl=perfil_usuario" class="btn-menu-usr">                        <i class="fas fa-user-circle fa-fw" style="margin-right: 25px">    </i><?php echo ucfirst($_SESSION['usuario']) ?></a></li>
-                    <li><a href="index.php?ctl=inicio" class="btn-menu" id="inicio">                <i class="fas fa-home" style="margin-right: 25px">                 </i>Inicio</a></li>
-                    <li><a href="index.php?ctl=anadir_alimento" class="btn-menu"><i class="fas fa-plus-circle fa-fw" style="margin-right: 25px">    </i>Añadir alimento</a></li>
-                    <li><a href="index.php?ctl=filtrar" class="btn-menu" id="filtrar_ali">           <i class="fas fa-filter fa-fw" style="margin-right: 25px">         </i>Filtrar</a></li>
-                    <li><a href="index.php?ctl=caducados" class="btn-menu">                            <i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 25px"></i>Caducados</a></li>
+                    <li><a href="index.php?ctl=perfil_usuario" class="btn-menu-usr">       <i class="fas fa-user-circle fa-fw" style="margin-right: 25px">    </i><?php echo ucfirst($_SESSION['usuario']) ?></a></li>
+                    <li><a href="index.php?ctl=inicio" class="btn-menu" id="inicio">       <i class="fas fa-home" style="margin-right: 25px">                 </i>Inicio</a></li>
+                    <li><a href="index.php?ctl=anadir_alimento" class="btn-menu">          <i class="fas fa-plus-circle fa-fw" style="margin-right: 25px">    </i>Añadir alimento</a></li>
+                    <li><a href="index.php?ctl=filtrar" class="btn-menu" id="filtrar_ali"> <i class="fas fa-filter fa-fw" style="margin-right: 25px">         </i>Filtrar</a></li>
+                    <li><a href="index.php?ctl=caducados" class="btn-menu">                <i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 25px"></i>Caducados</a></li>
                     <!-- <li><a href="#" class="btn-menu">                            <i class="fas fa-snowflake fa-fw" style="margin-right: 25px">      </i>Congelados</a></li> -->
-                    <li><a href="index.php?ctl=categorias" class="btn-menu">     <i class="fas fa-tag fa-fw" style="margin-right: 25px">            </i>Categorías</a></li>
-                    <li><a href="index.php?ctl=calendario" class="btn-menu">                            <i class="far fa-calendar-alt fa-fw" style="margin-right: 25px">   </i>Calendario</a></li>
-                    <li><a href="index.php?ctl=ajustes" class="btn-menu">                         <i class="fas fa-cog fa-fw" style="margin-right: 25px">            </i>Ajustes</a></li>            
+                    <li><a href="index.php?ctl=categorias" class="btn-menu">               <i class="fas fa-tag fa-fw" style="margin-right: 25px">            </i>Categorías</a></li>
+                    <li><a href="index.php?ctl=calendario" class="btn-menu">               <i class="far fa-calendar-alt fa-fw" style="margin-right: 25px">   </i>Calendario</a></li>
+                    <li><a href="index.php?ctl=ajustes" class="btn-menu">                  <i class="fas fa-cog fa-fw" style="margin-right: 25px">            </i>Ajustes</a></li>            
+                    <li><a href="index.php?ctl=cerrarSession" class="btn-menu">            <i class="fas fa-sign-out-alt" style="margin-right: 25px"></i>            </i>Cerrar sesión</a></li>            
                 </ul>
             </nav>
             </header>

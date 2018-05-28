@@ -54,5 +54,20 @@ $(document).ready(function(){
 		});
 	}*/
 
-	/**/
+	/*buscar*/
+	var cont2 = 1;
+	$(".buscar").hide();
+	$(".search_btn").click(function(){
+		$(".buscar").show();
+		if (cont2 == 1) {
+			$(".buscar").show();
+			$(".tit1").hide();
+			cont2 = 0;
+		} else {
+			$(".buscar").hide();
+			$(".tit1").show();
+			cont2 = 1;
+		}		
+	});
+
 });

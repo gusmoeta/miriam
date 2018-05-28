@@ -13,7 +13,7 @@
 		    
 			<!-- FORM INICIO DE SESIÓN -->
 			<div class="wrap_form_sesion">
-				<form action="index.php?ctl=comprobar_user" method="POST" class="formulario" name="formu">
+				<form action="comprobarUserFunction.php" method="POST" class="formulario" name="formu">
 					<div>
 						<div class="input-group">
 							<input type="text" name="usuario" id="usuario" autofocus>

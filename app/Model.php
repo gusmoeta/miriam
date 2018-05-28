@@ -48,7 +48,7 @@ class Model{
     }
 
     public function identifica_usuario($user, $contra) {
-
+        //hay 3 res pero sola y sobra uno, el mensaje segurament
         $sql = "select * from usuarios";
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute();
@@ -59,6 +59,7 @@ class Model{
                 $users[]=$registro;
             }
         }else{
+            //sobra
             $res = "No se ha encontrado ningún usuario";
         }
 
@@ -71,6 +72,40 @@ class Model{
             }
         }
         return $res;
+    }
+
+    public function get_alimentos($id_user){
+        $sql = "select * from alimentos_users where id_usuario = '$id_user'";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
+    public function buscarAlimento($nombre, $id_user){       
+    
+        $sql = "select * from alimentos_users where nombre like concat(:nom,'%' ) and id_usuario = '$id_user'";  
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":nom" => $nombre));
+        $x = array();
+
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $x[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+
+        $consulta->closeCursor();
+        return $x;
     }
 
     public function get_tipos(){
@@ -88,8 +123,8 @@ class Model{
         return $res;
     }
 
-    public function get_categorias(){
-        $sql = "select id, nombre from categorias"; //where id_usuario
+    public function get_categorias($id_user){
+        $sql = "select id, nombre from categorias where id_usuario = '$id_user' order by nombre"; //where id_usuario
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute();
         $res = array();        
@@ -132,22 +167,18 @@ class Model{
         }            
     }
 
-
-    public function get_alimentos($id_user){
-        $sql = "select * from alimentos_users where id_usuario = '$id_user'";
-        $consulta = $this->conexion->prepare($sql);
-        $consulta->execute();
-        $res = array();        
-        if ($consulta->rowCount()>0) {
-            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
-                $res[]=$registro;
-            }
-        }else{
-            $res = "No hay registros en esta tabla";
-        }
-        return $res;
+    public function insertar_categoria($n, $i){
+        try{
+            $sql = "insert into categorias (id, nombre, id_usuario) 
+                    values (UUID(), :n, :i)";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute(array(":n" => $n, ":i" => $i));
+            $consulta->closeCursor();
+            $insertado = true;
+        } catch (Exception $e) {
+            die("Error: " . $e->getMessage());
+        }            
     }
-
 
 
 

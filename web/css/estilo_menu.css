@@ -33,7 +33,17 @@ header nav {
 header nav ul {
   overflow: hidden;
   list-style: none;
+  /*gus*/ 
 }
+
+/* @media screen and (max-width: 950px) {
+  #contenido {
+    min-width: 200px;
+   
+  } */
+
+
+
 
 /*header nav ul li {
   float: left;
@@ -69,7 +79,7 @@ header nav ul li a i {
 
 @media screen and (max-width: 950px) {
   header nav {
-    width: 75%;
+    width: 25%;
     height: 100%;
     margin: 0;
     position: fixed;
@@ -109,6 +119,7 @@ header nav ul li a i {
 
   .trash_btn {
     margin-left: 25px;
+    z-index: 1;
   }
 
   .botones {
@@ -125,6 +136,7 @@ header nav ul li a i {
     position: relative;
     float: left;
     top: -50px;
+    z-index: 1;
   }
 
   header nav ul li a {
@@ -180,6 +192,8 @@ header nav ul li:first-child a:hover {
 
 
 
+
+
 /*CONTENIDO*/
 
 #contenido {
@@ -227,3 +241,54 @@ header nav ul li:first-child a:hover {
   margin: auto;
 }
 
+/*BUSCAR*/
+
+input[type="search"] {
+  font-family: "Roboto", Arial;
+  font-size: 15px;
+  color: #898989;
+  width: 100%;
+  padding: 5px 0;
+  outline: none;
+  border: none;
+  background: none;
+  border-bottom: 0.8px solid #DCEDC8;
+}
+
+.content-buscar2 {
+  width: 100%;
+}
+
+.buscar2 {
+  margin: 0 0 0 770px;
+}
+
+@media screen and (max-width: 950px) {
+  .buscar2 {
+    display: none;
+  }
+
+  .buscar {
+    display: block;
+    position: relative;
+    float: left;
+    width: 90%;
+    top: -85px;
+    left: 60px;
+    margin-bottom: 0;
+  }
+
+  input[type="search"] {
+    color: #212121;
+    width: 60%;
+    padding: 5px 0;
+    border-bottom: 0.8px solid #212121;
+  }
+
+  input[type="search"]::placeholder {
+    color: #fcfcfc;
+    width: 60%;
+    padding: 5px 0;
+    border-bottom: 0.8px solid #DCEDC8;
+  }
+}

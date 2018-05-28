@@ -47,21 +47,28 @@ $naranja: #F57C00
 	//float: right
 	//height: 100%
 	width: 100%
-	background: #fcfcfc
+	background: #ffffff
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
 	padding: 20px
 	
 .card_list
 	padding: 0.50rem
 	list-style-type: none
-
+	
+@media screen and (max-width: 950px)
+	.card_list
+		padding: 0.50rem
+		list-style-type: none
+		width: 50%
+		margin: auto		
+		min-width: 250px
 
 .card_item 
 	margin: 0 0 0.50rem
 	padding: 0.5rem 0.5rem
 	border-top: 4px solid $secondary-text-color
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, 0.24)
-	background: white
+	background: #f5f5f5
 	cursor: pointer
 	transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1)
 
@@ -101,7 +108,7 @@ $naranja: #F57C00
 	background: $primary-color-dark
 	text-shadow: 1px 1px rgba(150, 69, 10, -0.7), 2px 2px rgba(255, 127, 19, 7.8) ,3px 3px rgba(255, 133, 20, 16.3) ,4px 4px rgba(255, 135, 20, 24.8) ,5px 5px rgba(255, 136, 20, 33.3) ,6px 6px rgba(255, 137, 20, 41.8) ,7px 7px rgba(255, 138, 20, 50.3) ,8px 8px rgba(255, 138, 20, 58.8) ,9px 9px rgba(255, 138, 20, 67.3) ,10px 10px rgba(255, 139, 20, 75.8) ,11px 11px rgba(255, 139, 20, 84.3) ,12px 12px rgba(255, 139, 20, 92.8) ,13px 13px rgba(255, 139, 20, 101.3) ,14px 14px rgba(255, 139, 20, 109.8) ,15px 15px rgba(255, 139, 20, 118.3) ,16px 16px rgba(255, 139, 20, 126.8) ,17px 17px rgba(255, 139, 20, 135.3) ,18px 18px rgba(255, 139, 21, 143.8) ,19px 19px rgba(255, 139, 21, 152.3) ,20px 20px rgba(255, 140, 21, 160.8)
 
-.verde:hover .info-nombre_alimento, .naranja:hover .info-dias
+.verde:hover .info-nombre_alimento, .verde:hover .info-dias
 	color: $primary-color-dark	
 
 .azulclaro
@@ -115,7 +122,7 @@ $naranja: #F57C00
 	color: $azulclaro
 
 .card_item:hover 
-	background: $divider-color
+	background: #e0e0e0
 
 .card_item:hover .info-foto
 	transform: scale(1.1)
@@ -161,6 +168,7 @@ $naranja: #F57C00
 		line-height: 1.5
 		font-size: 14px
 		margin: 0
+		width: 50%
 
 	.card_info .info-nombre_alimento small
 		font-size: 14px
