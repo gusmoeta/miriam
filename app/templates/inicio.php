@@ -1,4 +1,4 @@
-<?php ob_start() ?>
+<?php ob_start(); //var_dump($_SESSION);?>
 
 				<!-- TARJETAS DE PRUEBA -->
 				<div class="cards">

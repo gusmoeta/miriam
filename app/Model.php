@@ -48,7 +48,7 @@ class Model{
     }
 
     public function identifica_usuario($user, $contra) {
-
+        //hay 3 res pero sola y sobra uno, el mensaje segurament
         $sql = "select * from usuarios";
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute();
@@ -59,6 +59,7 @@ class Model{
                 $users[]=$registro;
             }
         }else{
+            //sobra
             $res = "No se ha encontrado ningún usuario";
         }
 

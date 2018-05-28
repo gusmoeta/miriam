@@ -3,48 +3,54 @@
  class Controller{
 
 
-    public function registro() {
-        $conBD = Model::singleton();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $conBD->inserta_usuario($_POST['nombre'], $_POST['email'], $_POST['pass']);      
-            //header('refresh:3;url=index.php?ctl=anadir_alimento');
-        }
-        require __DIR__ . '/templates/identificacion.php';        
-    }
+    // public function registro() {
+    //     $conBD = Model::singleton();
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //         $conBD->inserta_usuario($_POST['nombre'], $_POST['email'], $_POST['pass']);      
+    //         //header('refresh:3;url=index.php?ctl=anadir_alimento');
+    //     }
+    //     require __DIR__ . '/templates/identificacion.php';        
+    // }
 
-    public function identificacion($mensaje="") {        
-        $mensaje;
-        require __DIR__ . '/templates/identificacion.php';        
-    }
+    // public function identificacion($mensaje="") {        
+    //     $mensaje;
+    //     require __DIR__ . '/templates/identificacion.php';        
+    // }
 
-    public function comprobar_user() {
-        //session_start();
-        $user = $_POST['usuario'];
-        $contra = $_POST['contra'];
+    // public function comprobar_user() {
+    //     //session_start();
+    //     $user = $_POST['usuario'];
+    //     $contra = $_POST['contra'];
 
-        $_SESSION['usuario'] = $user;
-        $_SESSION['contra'] = $contra;
-        $conBD = Model::singleton();
-        $resultado = $conBD->identifica_usuario($user, $contra);
+    //     $_SESSION['usuario'] = $user;
+    //     $_SESSION['contra'] = $contra;
+    //     $conBD = Model::singleton();
+    //     //devuelve true o false mirar porq tiene un errorsito
+    //     $resultado = $conBD->identifica_usuario($user, $contra);
 
-        if ($resultado) {
-            //self::user_session($user);
-            self::inicio();            
-        }else{
-            $mensaje = "Datos incorrectos.";
-            self::identificacion($mensaje);
-        }
-    }
+    //     if ($resultado) {
+    //         //self::user_session($user);
+    //         self::inicio();            
+    //     }else{
+    //         $mensaje = "Datos incorrectos.";
+    //         self::identificacion($mensaje);
+    //     }
+    // }
+
+
+
+
 
    /* public function user_session($user) {
         $conBD = Model::singleton();
         $resultado = $conBD->get_user($user);
     }*/
 
-    public function perfil_usuario() {
-        session_destroy();
-        header('refresh:3;url=index.php?ctl=identificacion');
-    }
+    // public function perfil_usuario() {
+    //     session_destroy();
+    //     echo "lkjdlkajdflksdjflkasdjlksjdkldkl";
+    //     header('refresh:3;url=index.php?ctl=identificacion');
+    // }
 
     //VER ALIMENTOS 
 
@@ -260,6 +266,23 @@
         );
         
         require __DIR__ . '/templates/mostrarModificar.php';
+    }
+
+    public function cerrarSession(){
+
+        //como el formu identificacion tiene un control en los inputs, aunq la sesion siga abierta al no 
+        //ser borrada con la cookie, no permite entrar sin mas al darle al enviar, pero podria ser saltado quizas.
+       // session_start();
+        session_destroy();
+        //setcookie("PHPSESSID","",time()); //no ve aki, en claaes funcionba
+        // var_dump(session_name());
+        // var_dump(session_id());  //devuelve valor coockie
+        unset($_COOKIE['PHPSESSID']); //se presupone q borra la coocki pero solo la inicializa otro valor, tb esta bien
+        // var_dump(session_name());
+        // var_dump(session_id());  //devuelve valor coockie
+        $mensaje = "Session cerrada"; //o dejarlo vacio o cambiar la impresion del mensaje a otro lugar, quiza arriba derecha
+        include_once __DIR__ . '/../app/templates/identificacion.php'; 
+        // var_dump($_SESSION);
     }
   
 
