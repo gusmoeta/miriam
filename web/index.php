@@ -41,7 +41,7 @@
 
     if( empty( $_SESSION['usuario']) ){     
 
-        $mensaje="no estas identiudicasdlfjsl";       
+        $mensaje="";       
        require_once '../app/templates/identificacion.php';
        
     }else{ //si session llena

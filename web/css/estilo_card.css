@@ -1,5 +1,6 @@
 .cards {
-  width: 100%;
+  margin-top: "100px";
+  width: 50%;
   background: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   padding: 20px; }
@@ -12,8 +13,7 @@
   .card_list {
     padding: 0.5rem;
     list-style-type: none;
-    width: 50%;
-    margin: auto;
+    width: 100%;
     min-width: 250px; } }
 .card_item {
   margin: 0 0 0.5rem;

@@ -27,11 +27,11 @@
 								</select>
 								<label class="label" for="tipo">Tipo</label>
 							</div>
-							<div class="input-group" id="fecha_hide">
+							<div class="input-group fcongediv">
 								<input type="date" name="fecha_con" id="fecha_con" value="">
 								<label class="label" for="fecha_con">Fecha de congelado</label>
 							</div>
-							<div class="input-group">
+							<div class="input-group fcaddiv">
 								<input type="date" name="fecha_cad" id="fecha_cad" value="" required>
 								<label class="label" for="fecha_cad">Fecha de caducidad</label>
 							</div>
