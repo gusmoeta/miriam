@@ -17,9 +17,10 @@ body {
 }
 
 header nav {  
-  width: 90%;
+  width: 5%;
   min-width: 200px;
   margin: 10px auto;
+  position:fixed
 }
 
 .menu_bar {
@@ -79,8 +80,7 @@ header nav ul li a i {
 
 @media screen and (max-width: 950px) {
   header nav {
-    width: 25%;
-    height: 100%;
+    width: 25%;  
     margin: 0;
     position: fixed;
     overflow: auto;
@@ -195,24 +195,50 @@ header nav ul li:first-child a:hover {
 
 
 /*CONTENIDO*/
-
-#contenido {
-  display: block;
-  position: relative;
-  top: -535px;
+ #contenido{
+  /* border: 1px solid;*/
+  width: 80%;
   float: right;
-  width: 75%;
-  margin: auto 50px;
-}
+  
+  margin-right:2%; 
+} 
+
 
 @media screen and (max-width: 950px) {
-  #contenido {
+  #contenido{    
     width: 100%;
+    margin: auto;
+  }  
+}
+
+
+@media screen and (max-width: 1166) {
+  #contenido{    
+    width: 80%;
+    clear:both;
+    margin-left: 500px;
+  } 
+ }
+/* #contenido {
+  display: inline-block;
+  position: relative;
+  width: 75%;
+  margin: auto; */
+  /*top: -535px;*/
+  /*left: 200px;*/
+  /*float: right;*/
+  /*margin: auto 150px;*/
+/* } */
+
+/* @media screen and (max-width: 950px) {
+  #contenido {
+    width: 80%;
     position: relative;
     top: -30px;
-    margin-right: 0;
-  }
-}
+    margin-right: 10px; */
+    /*left: 50px;*/
+  /* }
+} */
 
 
 /*TITULO*/

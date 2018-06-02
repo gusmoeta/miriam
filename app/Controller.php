@@ -79,7 +79,7 @@
         require __DIR__ . '/templates/inicio.php';
     }
 
-    //AÑADIR NUEVO ALIMENTO
+    //AÑADIR NUEVO ALIMENT
     public function anadir_alimento(){
         $conBD = Model::singleton();
         $params = array("titulo" => "Nuevo alimento", "tipos" => $conBD->get_tipos(), "categorias" => $conBD->get_categorias($_SESSION['id_usuario']),
@@ -108,8 +108,9 @@
                     $fecha_con = date("Y-m-d", strtotime($_POST['fecha_con']));
                     //si es congelado la fecha cad no importa, de momento ponemosuna fecha automatica por defecto
                     //tb podria hacer el por defecto en la propia funcion
-                    $fecha_cad = "3000-01-01";
-
+                    //$fecha_cad = "3000-01-01";
+                    $fecha_cad = $_POST['fecha_cad'];
+                    
                     $conBD->insertar_alimento_ConFechaCongelado($_POST['nombre_ali'], $_POST['categoria'],
                         $_POST['tipo'], $fecha_cad, $fecha_con, $nombre_img, $_SESSION['id_usuario']);                          
                         
@@ -142,8 +143,9 @@
 
 
     public function filtrar(){
-        
-        $params = array("titulo" => "Filtrar");
+
+        $conBD = Model::singleton();                
+        $params = array("titulo" => "Filtrar", "tipos" => $conBD->get_tipos(), "categorias" => $conBD->get_categorias($_SESSION['id_usuario']) );
         require __DIR__ . '/templates/filtrar.php';        
     }
     

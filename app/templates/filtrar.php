@@ -7,13 +7,19 @@
 						<div>
 							<div class="input-group">
 								<select name="categoria" id="categoria">
-									<option selected>Selecciona una categoría</option>
+									<option value="">Selecciona una categoría</option>
+									<?php foreach ($params['categorias'] as $categoria) :?>
+											<option value="<?php echo $categoria['id'] ?>"><?php echo ucfirst($categoria['nombre']) ?></option>
+									<?php endforeach; ?>	
 								</select>
 								<label class="label" for="categoria">Categoria</label>
 							</div>
 							<div class="input-group">
 								<select name="tipo" id="tipo">
-									<option selected>Selecciona un tipo</option>
+									<option value="">Selecciona un tipo</option>
+									<?php foreach ($params['tipos'] as $tipo) :?>
+											<option value="<?php echo $tipo['id'] ?>"><?php echo ucfirst($tipo['nombre']) ?></option>
+									<?php endforeach; ?>
 								</select>
 								<label class="label" for="tipo">Tipo</label>
 							</div>

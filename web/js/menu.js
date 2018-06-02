@@ -2,22 +2,22 @@ $(document).ready(function(){
 	
 	var ventana_ancho = $(window).width();
 	var ventana_alto = $(window).height();
-	//alert(ventana_ancho);
+
 	$(window).on("resize", function(){
 		ventana_ancho = $(window).width();
 		ventana_alto = $(window).height();
-		//$("nav").show();
-		//alert(ventana_ancho);
+		$("nav").show();
+	
 		if (ventana_ancho >= 950) {
 			$("nav").show();
-			//alert(ventana_ancho);
+		
 			$(".tit2").show();
 		} else {
 			$(".tit2").hide();
 		}
 	});
 
-	if (ventana_ancho <= 950) {
+	if (ventana_ancho <= 1159) {
 		$("nav").hide();
 		$(".tit2").hide();
 	}

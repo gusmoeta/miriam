@@ -33,7 +33,9 @@
             <script type="text/javascript" src="../web/js/menu.js"></script>
             </head>
             
-            <body>            
+            <body>     
+            <!-- <body onresize="tamano()">      -->
+            <!-- <p id="an"></p>        -->
             <header>
             <!-- BARRA SUPERIOR MÓVIL -->
             <div class="menu_bar">
@@ -112,5 +114,18 @@
             </footer>
 
      </body>
+     <!-- <script>
+        function tamano()
+        {
+         
+            var ancho = window.innerWidth;
+            
+            parrafo = document.getElementById("an");
+            parrafo.innerHTML = ancho;
+
+            
+
+        }
+     </script> -->
  </html>
 
