@@ -17,6 +17,7 @@
             <!-- <link rel="stylesheet" href="../web/css/estilo_card2.css"> -->
             <link rel="stylesheet" href="../web/css/estilo_forms.css">
             <link rel="stylesheet" href="../web/css/estilo_categorias.css">
+            <link rel="stylesheet" href="../web/css/estilo_perfil.css">
             <!-- SCRIPTS -->
             <script type="text/javascript" src="../web/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
             <script type="text/javascript" src="../web/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
