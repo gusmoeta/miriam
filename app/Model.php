@@ -74,6 +74,21 @@ class Model{
         return $res;
     }
 
+    public function get_usuario($id_user){
+        $sql = "select * from usuarios where id = '$id_user'";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
     public function get_alimentos($id_user){
         $sql = "select * from alimentos_users where id_usuario = '$id_user'";
         $consulta = $this->conexion->prepare($sql);

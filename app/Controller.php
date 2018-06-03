@@ -180,15 +180,67 @@
         require __DIR__ . '/templates/filtrar.php';        
     }
 
-    public function caducados(){
+    public function caducados() {
         $conBD = Model::singleton();
+        self::mandar_mail();
         $params = array(
             "titulo" => "Caducados", 
             "resultado" => $conBD->get_alimentos($_SESSION['id_usuario']));
         require __DIR__ . '/templates/caducados.php';        
     }
 
-    public function categorias(){
+    public function mandar_mail() {
+        $conBD = Model::singleton();
+        $alimentos = $conBD->get_alimentos($_SESSION['id_usuario']);
+        $usuario = $conBD->get_usuario($_SESSION['id_usuario']);
+        $to = $usuario[0]["correo"];
+        $nombre = $usuario[0]["nombre"];
+        
+        foreach ($alimentos as $alimento){
+            $fecha_cad = $alimento['fecha_caducidad'];
+            $fecha_hoy = date("Y-m-d");
+            $datetime1 = date_create($fecha_hoy);
+            $datetime2 = date_create($fecha_cad);
+            $interval = date_diff($datetime1, $datetime2);
+            if ($interval->format('%r%a días')<5 && $interval->format('%r%a días')>0) {
+                echo $alimento['nombre'];
+                try{
+                    /*$mail=new PHPMailer(true);
+                    $mail->CharSet = 'UTF-8';                
+                    $body = 'Tu(s) $alimento["nombre"] va(n) a caducar próximamente.';                
+                    $mail->IsSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port       = 587;
+                    $mail->SMTPDebug  = 1;
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'caducidad_alimentos@gmail.com';
+                    $mail->Password   = 'c4d4l1m3nt0s';
+                    $mail->SetFrom('caducidad_alimentos@gmail.com', "admin");
+                    $mail->AddReplyTo('no-reply@mycomp.com','no-reply');
+                    $mail->Subject    = 'Tu alimento va a caducar';
+                    $mail->MsgHTML($body);
+                    
+                    $mail->AddAddress($to, $nombre);
+                    $mail->send();*/
+                    $titulo = 'Tu alimento va a caducar';
+                    $mensaje = 'Tu(s) $alimento["nombre"] va(n) a caducar próximamente.'; 
+                    $cabeceras = 'From: caducidad.alimentos@gmail.com' . "\r\n" .
+                        'Reply-To: caducidad.alimentos@gmail.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+                    
+                    mail($to, $titulo, $mensaje, $cabeceras);
+
+                } catch (Exception $e) {
+                    echo 'Message could not be sent. Mailer Error: '/*, $mail->ErrorInfo*/;
+                }
+            }
+        }
+
+        var_dump($usuario);
+    }
+
+    public function categorias() {
         $conBD = Model::singleton();
         $params = array("titulo" => "Categorías", "categorias" => $conBD->get_categorias($_SESSION['id_usuario']),
         );

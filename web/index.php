@@ -8,8 +8,11 @@
  require_once __DIR__ . '/../app/Config.php';
  require_once __DIR__ . '/../app/Model.php';
  require_once __DIR__ . '/../app/Controller.php';
- require_once __DIR__ . '/../app/vendor/autoload.php';
+ //require_once __DIR__ . '/../app/vendor/autoload.php';
  require_once __DIR__ . '/../app/GoogleAuth.php';
+ require_once __DIR__ . '/../app/PHPMailer-master/src/Exception.php';
+ require_once __DIR__ . '/../app/PHPMailer-master/src/PHPMailer.php';
+ require_once __DIR__ . '/../app/PHPMailer-master/src/SMTP.php';
 
 
 

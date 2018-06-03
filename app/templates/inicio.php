@@ -1,6 +1,5 @@
 <?php ob_start(); //var_dump($_SESSION);?>
 
-				<!-- TARJETAS DE PRUEBA -->
 				<div class="cards">
 					<div class="content-buscar2">
 						<div class="input-group buscar2">
@@ -10,33 +9,7 @@
 						</div>
 					</div>
 					<ul class="card_list" id="card_list">
-						<!-- <li class="card_item naranja" id="draggable"> ui-widget-content
-							<div class="card_info">
-								<div class="info-alimento">
-									<img class="info-foto" src="../web/images/galletas.jpg" alt="">
-									<p class="info-nombre_alimento"><small>Galletas</small><br>19/05/2018</p>
-								</div>
-								<div class="info-dias">7 días</div>
-							</div>
-						</li>
-						<li class="card_item azulclaro" id="draggable">
-							<div class="card_info">
-								<div class="info-alimento">
-									<img class="info-foto" src="../web/images/salmon.jpg" alt="">
-									<p class="info-nombre_alimento"><small>Salmón</small><br>23/05/2018</p>
-								</div>
-								<div class="info-dias">10 días</div>
-							</div>
-						</li>
-						<li class="card_item azul" id="draggable">
-							<div class="card_info">
-								<div class="info-alimento">
-									<img class="info-foto" src="../web/images/tomate.jpg" alt="">
-									<p class="info-nombre_alimento"><small>Tomates</small><br>18/05/2018</p>
-								</div>
-								<div class="info-dias">6 días</div>
-							</div>
-						</li> -->
+
 
 						<!-- TARJETAS DE DE LA BBDD -->
 							<!-- si no hay registros/imagenes -->
@@ -164,3 +137,34 @@
 <?php $contenido = ob_get_clean() ?>
 
 <?php include 'layout.php' ?> 
+
+
+
+				<!-- TARJETAS DE PRUEBA -->
+				<!-- <li class="card_item naranja" id="draggable"> ui-widget-content
+					<div class="card_info">
+						<div class="info-alimento">
+							<img class="info-foto" src="../web/images/galletas.jpg" alt="">
+							<p class="info-nombre_alimento"><small>Galletas</small><br>19/05/2018</p>
+						</div>
+						<div class="info-dias">7 días</div>
+					</div>
+				</li>
+				<li class="card_item azulclaro" id="draggable">
+					<div class="card_info">
+						<div class="info-alimento">
+							<img class="info-foto" src="../web/images/salmon.jpg" alt="">
+							<p class="info-nombre_alimento"><small>Salmón</small><br>23/05/2018</p>
+						</div>
+						<div class="info-dias">10 días</div>
+					</div>
+				</li>
+				<li class="card_item azul" id="draggable">
+					<div class="card_info">
+						<div class="info-alimento">
+							<img class="info-foto" src="../web/images/tomate.jpg" alt="">
+							<p class="info-nombre_alimento"><small>Tomates</small><br>18/05/2018</p>
+						</div>
+						<div class="info-dias">6 días</div>
+					</div>
+				</li> -->
