@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
-<div class="contenedor_perfil">
+<div class="contenedor_perfil cards">
   <div class="container">
     <div class="img-container">
       <img src="../web/images/perfil_banner.png" alt="" class="banner-img">
@@ -22,9 +22,9 @@
         <span>Cambiar email</span> -->
       </div>
       
-      <div class="follow">Cambiar contraseña</div><br>
+      <div class="follow">Cambiar contraseña</div>
       <div class="follow">Cambiar email</div>
-
+      <div class="follow eliminar">Eliminar cuenta</div>
       
 
     </div>    

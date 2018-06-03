@@ -41,6 +41,8 @@
 											<?php endif; ?>
 										</div>
 									</li>
+								<?php else: ?>
+									<p>No tienes alimentos caducados</p>
 								<?php endif; ?>
 							<?php endforeach; ?> 
 						<?php endif; ?>
