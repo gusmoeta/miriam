@@ -51,11 +51,10 @@
         $resultado = $conBD->get_user($user);
     }*/
 
-    // public function perfil_usuario() {
-    //     session_destroy();
-    //     echo "lkjdlkajdflksdjflkasdjlksjdkldkl";
-    //     header('refresh:3;url=index.php?ctl=identificacion');
-    // }
+    public function perfil_usuario() {
+        $params = array("titulo" => "Perfil de usuario");
+        require __DIR__ . '/templates/perfil_usuario.php';      
+    }
 
     //VER ALIMENTOS 
 
@@ -224,12 +223,12 @@
                     $mail->AddAddress($to, $nombre);
                     $mail->send();*/
                     $titulo = 'Tu alimento va a caducar';
-                    $mensaje = 'Tu(s) $alimento["nombre"] va(n) a caducar próximamente.'; 
+                    $mensaje = 'Tu(s) ' . $alimento["nombre"] . 'va(n) a caducar próximamente.'; 
                     $cabeceras = 'From: caducidad.alimentos@gmail.com' . "\r\n" .
                         'Reply-To: caducidad.alimentos@gmail.com' . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
                     
-                    mail($to, $titulo, $mensaje, $cabeceras);
+                    //mail($to, $titulo, $mensaje, $cabeceras);
 
                 } catch (Exception $e) {
                     echo 'Message could not be sent. Mailer Error: '/*, $mail->ErrorInfo*/;
@@ -238,6 +237,54 @@
         }
 
         var_dump($usuario);
+    }
+
+    public function eliminar_alimento() {
+        $conBD = Model::singleton();
+        $conBD->eliminar_alimento($_GET['id_ali'], $_SESSION['id_usuario']);
+        header('refresh:0;url=index.php?ctl=inicio');
+    }
+
+    public function editar_alimento() {
+        $conBD = Model::singleton();
+        $params = array("titulo" => "Editar alimento", "tipos" => $conBD->get_tipos(), "categorias" => $conBD->get_categorias($_SESSION['id_usuario']),
+            "alimento" => $conBD->get_alimento($_REQUEST['id_ali'], $_SESSION['id_usuario'])
+        );        
+        //var_dump($params);
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                //$nombre_img = self::subir_img($_FILES['imagen_ali']['tmp_name']);
+                $fecha_cad = date("Y-m-d", strtotime($_POST['fecha_cad']));
+                
+                if (!isset($_FILES['imagen_ali']['tmp_name']) || empty($_FILES['imagen_ali']['tmp_name'])) {
+                    $nombre_img = $_POST['imagen'];
+                }else{
+                    $nombre_img = self::subir_img($_FILES['imagen_ali']['tmp_name']);
+                }
+                
+                //quizas con uno solo valdria, solo habria q comporbar  si viene congelado vacio o no y si es vacio ponerlo a null
+                if (!isset($_POST['fecha_con']) || empty($_POST['fecha_con'])) {
+                    $conBD->editar_alimento($_POST['nombre_ali'], $_POST['categoria'],
+                        $_POST['tipo'], $fecha_cad, $nombre_img, $_SESSION['id_usuario'], $_POST['id_ali']);  
+                        //header('refresh:0;url=index.php?ctl=inicio');                        
+                }else{
+
+                    $fecha_con = date("Y-m-d", strtotime($_POST['fecha_con']));
+                    //si es congelado la fecha cad no importa, de momento ponemosuna fecha automatica por defecto
+                    //tb podria hacer el por defecto en la propia funcion
+                    //$fecha_cad = "3000-01-01";
+                    $fecha_cad = $_POST['fecha_cad'];                    
+                    $conBD->editar_alimento($_POST['nombre_ali'], $_POST['categoria'],
+                        $_POST['tipo'], $fecha_cad, $fecha_con, $nombre_img, $_SESSION['id_usuario'], $_POST['id_ali']);                           
+                        //header('refresh:0;url=index.php?ctl=inicio');
+                }
+
+                        // var_dump($_POST);
+                        // var_dump($_POST['fecha_cad']);
+                        // var_dump($fecha_cad);
+                //header('refresh:3;url=index.php?ctl=anadir_alimento');
+        }
+        require __DIR__ . '/templates/editar_alimento.php';       
     }
 
     public function categorias() {
@@ -324,7 +371,7 @@
         require __DIR__ . '/templates/verTablaeliminar.php';
     }
 
-    public function eliminar(){
+    public function eliminarxxxxx(){
 
         if (!isset($_POST['id'])) {
             throw new Exception('Página no encontrada');

@@ -33,11 +33,19 @@
 								<?php if ($interval->format('%r%a días')<0): ?>
 									<li class="card_item rojo" id="draggable">
 										<div class="card_info">
+											<!-- three dot menu -->											
+											<div class="dropdown">																						
+												<!-- menu -->
+												<div class="myDropdown dropdown-content">
+													<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+													<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+												</div>
+											</div>
 											<div class="info-alimento">
 												<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 												<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 											</div>
-											<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i>  Hace <?php echo $interval->format('%a días'); ?></div>
+											<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i>  Hace <?php echo $interval->format('%a días'); ?></div><!-- three dots --><div class="dots"></div>
 										</div>
 									</li>
 								<!-- SI DIFERENCIA POSITIVA, OTRO FORMATO -->
@@ -49,33 +57,57 @@
 														case $alimento['id_tipo'] == "4c919ada-5aa0-11e8-a54d-e0d55e08b86f": ?>
 																<li class="card_item naranja" id="draggable">
 																	<div class="card_info">
+																		<!-- three dot menu -->											
+																		<div class="dropdown">																						
+																			<!-- menu -->
+																			<div class="myDropdown dropdown-content">
+																				<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+																				<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+																			</div>
+																		</div>
 																		<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
-																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
+																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div><!-- three dots --><div class="dots"></div>
 																	</div>
 																</li>
 												<?php	break; ?>
 												<?php	case $alimento['id_tipo'] == "4c901697-5aa0-11e8-a54d-e0d55e08b86f": ?>
-																<li class="card_item naranja" id="draggable">
+																<li class="card_item azul" id="draggable">
 																	<div class="card_info">
-																		<div class="info-alimento">
+																		<!-- three dot menu -->											
+																		<div class="dropdown">																						
+																			<!-- menu -->
+																			<div class="myDropdown dropdown-content">
+																				<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+																				<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+																			</div>
+																		</div>
+																			<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
-																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div>
+																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div><!-- three dots --><div class="dots"></div>
 																	</div>
 																</li>
 												<?php	break; ?>
 												<?php	case $alimento['id_tipo'] == "4c919b77-5aa0-11e8-a54d-e0d55e08b86f": ?>
 														<li class="card_item naranja" id="draggable">
 															<div class="card_info">
+																<!-- three dot menu -->											
+																<div class="dropdown">																						
+																	<!-- menu -->
+																	<div class="myDropdown dropdown-content">
+																		<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+																		<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+																	</div>
+																</div>
 																<div class="info-alimento">
 																	<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																	<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																</div>
-																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
+																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div><!-- three dots --><div class="dots"></div>
 															</div>
 														</li>
 												<?php	break; ?>
@@ -92,33 +124,57 @@
 														case $alimento['id_tipo'] == "4c919ada-5aa0-11e8-a54d-e0d55e08b86f": ?>
 																<li class="card_item verde" id="draggable">
 																	<div class="card_info">
+																		<!-- three dot menu -->											
+																		<div class="dropdown">																						
+																			<!-- menu -->
+																			<div class="myDropdown dropdown-content">
+																				<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+																				<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+																			</div>
+																		</div>
 																		<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
-																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
+																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div><!-- three dots --><div class="dots"></div>
 																	</div>
 																</li>
 												<?php	break; ?>
 												<?php	case $alimento['id_tipo'] == "4c901697-5aa0-11e8-a54d-e0d55e08b86f": ?>
-																<li class="card_item verde" id="draggable">
+																<li class="card_item azul" id="draggable">
 																	<div class="card_info">
+																		<!-- three dot menu -->											
+																		<div class="dropdown">																						
+																			<!-- menu -->
+																			<div class="myDropdown dropdown-content">
+																				<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+																				<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+																			</div>
+																		</div>
 																		<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
-																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div>
+																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div><!-- three dots --><div class="dots"></div>
 																	</div>
 																</li>
 												<?php	break; ?>
 												<?php	case $alimento['id_tipo'] == "4c919b77-5aa0-11e8-a54d-e0d55e08b86f": ?>
 														<li class="card_item verde" id="draggable">
 															<div class="card_info">
+																<!-- three dot menu -->											
+																<div class="dropdown">																						
+																	<!-- menu -->
+																	<div class="myDropdown dropdown-content">
+																		<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+																		<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+																	</div>
+																</div>
 																<div class="info-alimento">
 																	<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 																	<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																</div>
-																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
+																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div><!-- three dots --><div class="dots"></div>
 															</div>
 														</li>
 												<?php	break; ?>

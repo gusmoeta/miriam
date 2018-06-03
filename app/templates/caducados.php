@@ -20,6 +20,14 @@
 								<?php if ($interval->format('%r%a días') <= 0): ?>
 									<li class="card_item rojo" id="draggable">
 										<div class="card_info">
+											<!-- three dot menu -->											
+											<div class="dropdown">																						
+												<!-- menu -->
+												<div class="myDropdown dropdown-content">
+													<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
+													<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+												</div>
+											</div>
 											<div class="info-alimento">
 												<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
 												<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo $alimento['fecha_caducidad'] ?></p>
@@ -29,7 +37,7 @@
 											<?php elseif($interval->format('%a días') == 1): ?>
 												<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i><?php echo "Ayer" ?></div>
 											<?php else: ?>
-												<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i><?php echo $interval->format('%a días') ?></div>
+												<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i><?php echo $interval->format('%a días') ?></div><!-- three dots --><div class="dots"></div>
 											<?php endif; ?>
 										</div>
 									</li>
