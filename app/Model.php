@@ -303,4 +303,23 @@ class Model{
         return $nalimentos;
     }
 
+
+
+
+    public function resultadosFiltrados($sentencia){
+        $sql = $sentencia;
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
+
 }

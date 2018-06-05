@@ -15,23 +15,20 @@ $(document).ready(function(){
             
         }else{
            
-
-   let hoy = new Date();
-    let agno = hoy.getFullYear();
-    let mes = hoy.getMonth() + 1;
-    let dia = hoy.getDate();
-
-    if(mes < 10){
-        mes = '0'+mes; 
-    }
-
-    if(dia < 10){
-        dia = '0'+dia; 
-    }
-    let fechaActualString = agno + "-" + mes + "-" + dia;
-    
-
-            
+            //para obtener fecha actual
+            let hoy = new Date();
+            let agno = hoy.getFullYear();
+            let mes = hoy.getMonth() + 1;
+            let dia = hoy.getDate();
+            //añade 0 delante
+            if(mes < 10){
+                mes = '0'+mes; 
+            }
+            if(dia < 10){
+                dia = '0'+dia; 
+            }
+            let fechaActualString = agno + "-" + mes + "-" + dia;
+                        
             $(".fcongediv").hide();            
             $("#fecha_con").removeProp("required");
             $(".fcaddiv").show();

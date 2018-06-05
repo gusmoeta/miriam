@@ -2,8 +2,8 @@
 
 
 			<div class="contenedor_form">
-				<div class="wrap_form">
-					<form action="" method="POST" class="formulario" name="formu">
+				<div class="wrap_form">				
+					<form action="index.php?ctl=filtrarDatos" method="POST" class="formulario" name="formu">
 						<div>
 							<div class="input-group">
 								<select name="categoria" id="categoria">
@@ -24,16 +24,17 @@
 								<label class="label" for="tipo">Tipo</label>
 							</div>
 							<div class="input-group">
-								<input type="date" name="fecha_cad" id="fecha_cad">
-								<label class="label" for="fecha_cad">Seleccione una fecha</label>
+								<input type="date" name="fecha_ini" id="fecha_ini">
+								<label class="label" for="fecha_ini">Seleccione una fecha</label>
 							</div>
 							<div class="input-group">
-								<input type="date" name="fecha_cad" id="fecha_cad">
-								<label class="label" for="fecha_cad">O ambas, para buscar en un rango</label>
+								<input type="date" name="fecha_fin" id="fecha_fin">
+								<label class="label" for="fecha_fin">O ambas, para buscar en un rango</label>
 							</div>
+							<!-- name="btn_anadir_ali" -->
 							<div class="btn-input">
-								<input type="submit" value="Buscar" name="btn_anadir_ali" id="btn_anadir_ali">
-							</div
+								<input type="submit" value="Buscar"  id="btn_anadir_ali">
+							</div>
 						</div>
 					</form>
 				</div>

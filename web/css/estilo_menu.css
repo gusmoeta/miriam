@@ -9,12 +9,12 @@ body {
   background: #EAEAEA;
 }
 
-@media screen and (min-width: 950px) {
+ @media screen and (min-width: 950px) {
   header {
     width: 18%;
     position: relative;
   }
-}
+} 
 
 header nav {  
   width: 5%;
@@ -98,6 +98,9 @@ header nav ul li a i {
 
   header {
     width: 100%;
+    position: fixed;
+    z-index: 100;
+
   }
 
   .menu_bar {
@@ -198,9 +201,9 @@ header nav ul li:first-child a:hover {
  #contenido{
   /* border: 1px solid;*/
   width: 80%;
-  float: right;
-  
+  float: right;  
   margin-right:2%; 
+  margin-top: 60px !important; /*para q se aplicque, otro estilo estaba interfiriendo*/
 } 
 
 

@@ -1,4 +1,4 @@
- <?php
+<?php
 
  class Controller{
 
@@ -152,33 +152,154 @@
     public function filtrarDatos(){
         $conBD = Model::singleton();
 
-        //decide camino
-        $numElementoEnArray = count($_REQUEST);
-
-        //solo cuatro posibilidades o 4 elementos
-        switch ($numElementoEnArray) {
-            case 1:
-                $params = array("titulo" => "FiltrarDatos1", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 1));
-                break;
-                
-                case 2:
-                $params = array("titulo" => "FiltrarDatos2", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 2));                
-                break;
-                
-                case 3:
-                $params = array("titulo" => "FiltrarDatos3", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 3));                
-                break;
-                
-                case 4:
-                $params = array("titulo" => "FiltrarDatos4", "resultado"=> $conBD->resultadosFiltrados($_REQUEST, 4));                
-                break;
-                
-                default:
-                # code...
-                break;
+        $numCamposElementosLlenos=0;
+        array_shift($_REQUEST); //quito el valor del ctl
+        foreach ($_REQUEST as $value) {
+            if ( !empty($value) ) {
+                $numCamposElementosLlenos++;
+            }
         }
 
-        require __DIR__ . '/templates/filtrar.php';        
+        //echo "$numCamposElementosLlenos numeo camps <br>";
+
+
+        $id_user   = $_SESSION['id_usuario'];
+
+        $cat       = $_REQUEST['categoria'];
+        $tipo      = $_REQUEST['tipo'];
+        $fecha_ini = $_REQUEST['fecha_ini'];
+        $fecha_fin = $_REQUEST['fecha_fin'];
+
+
+        $sentenciaIncompleta1 = "select * from alimentos_users where id_usuario = '$id_user'"; 
+        //solo cuatro posibilidades o 4 elementos
+        switch ($numCamposElementosLlenos) {
+
+            case 1:
+                switch(true)
+                {
+                    case !empty($_REQUEST['categoria']):
+
+                        $sentenciaIncompleta2 = "and id_categoria = '$cat'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+
+                        $params = array("titulo" => "FiltrarDatos1/1", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) ); 
+
+                    break;
+                    case !empty($_REQUEST['tipo']):
+
+                        $sentenciaIncompleta2 = "and id_tipo = '$tipo'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+
+                        $params = array("titulo" => "FiltrarDatos1/2", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) ); 
+
+                    break;
+                    case !empty($_REQUEST['fecha_ini']):
+
+                        $sentenciaIncompleta2 = "and fecha_caducidad = '$fecha_ini'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+
+                        $params = array("titulo" => "FiltrarDatos1/3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) ); 
+                         
+                    break;                
+                    default:                        
+                        //echo "switch1 <br>";
+                        header('refresh:0;url=index.php?ctl=filtrar');
+                        exit;
+                }                
+            break;
+                
+            case 2:
+                switch(true){
+                    case !empty( $_REQUEST['categoria'] ) && !empty( $_REQUEST['tipo'] ):
+                                                
+                        $sentenciaIncompleta2 = "and id_tipo = '$tipo' and id_categoria = '$cat'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+
+                        $params = array("titulo" => "FiltrarDatos2/1", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) ); 
+                                        
+                    break;
+                    case !empty( $_REQUEST['categoria'] ) && !empty( $_REQUEST['fecha_ini'] ):
+
+                        $sentenciaIncompleta2 = "and id_categoria = '$cat' and fecha_caducidad = '$fecha_ini'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+                        $params = array("titulo" => "FiltrarDatos2/2", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) ); 
+
+                    break;
+                    case !empty( $_REQUEST['tipo'] )      && !empty( $_REQUEST['fecha_ini'] ):
+
+                        $sentenciaIncompleta2 = "and id_tipo = '$tipo' and fecha_caducidad = '$fecha_ini'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+                        $params = array("titulo" => "FiltrarDatos2/3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) );   
+
+                    break;
+                    case !empty( $_REQUEST['fecha_ini'] ) && !empty( $_REQUEST['fecha_fin'] ):
+
+                        $sentenciaIncompleta2 = "and ( fecha_caducidad BETWEEN CAST('$fecha_ini' AS DATE) AND CAST('$fecha_fin' AS DATE) ) " ;                                                       
+
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+                        $params = array("titulo" => "FiltrarDatos2/4", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) );
+
+                    break;
+
+                    default:
+                    //echo "switch2 <br>";
+                    header('refresh:0;url=index.php?ctl=filtrar');
+                    exit;
+                }
+            
+            break;
+                
+            case 3:
+                switch(true){
+                    case !empty( $_REQUEST['categoria']) && !empty($_REQUEST['tipo']) && !empty($_REQUEST['fecha_ini']):
+
+                        $sentenciaIncompleta2 = "and id_tipo = '$tipo' and id_categoria = '$cat' and fecha_caducidad = '$fecha_ini'";
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+
+                        $params = array("titulo" => "FiltrarDatos3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ));  
+
+                    break;
+
+                    default:
+                    //echo "switch3 <br>";
+                    header('refresh:0;url=index.php?ctl=filtrar');
+                    exit;
+                }
+                
+            break;
+            
+            case 4:
+                switch(true){
+                    case !empty( $_REQUEST['categoria']) && !empty($_REQUEST['tipo']) && !empty($_REQUEST['fecha_ini']) && !empty($_REQUEST['fecha_fin']):
+
+                        $sentenciaIncompleta2 = "and id_tipo = '$tipo' and id_categoria = '$cat' and fecha_caducidad = '$fecha_ini' and ( fecha_caducidad BETWEEN CAST('$fecha_ini' AS DATE) AND CAST('$fecha_fin' AS DATE) ) " ; 
+                        $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
+
+                        $params = array("titulo" => "FiltrarDatos3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ));    
+                    break;
+
+                    default:
+                    //echo "switch4 <br>";
+                    header('refresh:0;url=index.php?ctl=filtrar');
+                    exit;
+                }
+
+                          
+            break;
+            
+            default:
+                    //si no coincide el num param (o es 0) redirige a filtrar
+                    //echo "switch  general <br>";
+                    header('refresh:0;url=index.php?ctl=filtrar');
+                    exit;
+                
+
+           //
+            
+        }
+
+        require __DIR__ . '/templates/filtrarDatos.php';        
     }
 
     public function caducados(){
@@ -329,3 +450,4 @@
  }
 
 
+?>
