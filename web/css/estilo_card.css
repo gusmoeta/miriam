@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .cards {
   margin-top: "100px";
   width: 50%;
@@ -105,7 +106,9 @@
 
 .card_info .info-dias {
   margin: 0 10px;
-  font-size: 20px; }
+  font-size: 20px;
+  display: inline;
+  margin-right: -550px; }
 
 @media screen and (max-width: 950px) {
   .cards {
@@ -124,6 +127,37 @@
   .card_info .info-dias {
     margin: 0 10px;
     font-size: 14px; } }
+/*PUNTITOS */
+.dots:after {
+  content: "⠇";
+  font-size: 20px;
+  position: relative;
+  top: -25px;
+  right: -10px;
+  display: inline; }
+
+.dropdown {
+  position: absolute;
+  display: block;
+  right: 3em; }
+
+.dropdown-content {
+  margin-top: 60px;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); }
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  z-index: 3; }
+
+.dropdown a:hover {
+  background-color: #f1f1f1; }
+
 /*CADUCADOS */
 .rojo {
   border-top-color: #D32F2F; }

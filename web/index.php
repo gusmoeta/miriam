@@ -12,8 +12,11 @@ session_start();
  require_once __DIR__ . '/../app/Config.php';
  require_once __DIR__ . '/../app/Model.php';
  require_once __DIR__ . '/../app/Controller.php';
-//  require_once __DIR__ . '/../app/vendor/autoload.php';
-//  require_once __DIR__ . '/../app/GoogleAuth.php';
+ //require_once __DIR__ . '/../app/vendor/autoload.php';
+ require_once __DIR__ . '/../app/GoogleAuth.php';
+ require_once __DIR__ . '/../app/PHPMailer-master/src/Exception.php';
+ require_once __DIR__ . '/../app/PHPMailer-master/src/PHPMailer.php';
+ require_once __DIR__ . '/../app/PHPMailer-master/src/SMTP.php';
 
 
 
@@ -26,6 +29,8 @@ session_start();
      'inicio'               => array('controller' =>'Controller','action' =>'inicio'),
      'buscar_alimento'      => array('controller' =>'Controller','action' =>'buscar_alimento'),
      'anadir_alimento'      => array('controller' =>'Controller','action' =>'anadir_alimento'),
+     'eliminar_alimento'    => array('controller' =>'Controller','action' =>'eliminar_alimento'),
+     'editar_alimento'      => array('controller' =>'Controller','action' =>'editar_alimento'),
      'filtrar'              => array('controller' =>'Controller','action' =>'filtrar'),
      'filtrarDatos'         => array('controller' =>'Controller','action' =>'filtrarDatos'),
      'caducados'            => array('controller' =>'Controller','action' =>'caducados'),

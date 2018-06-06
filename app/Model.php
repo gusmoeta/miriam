@@ -74,6 +74,21 @@ class Model{
         return $res;
     }
 
+    public function get_usuario($id_user){
+        $sql = "select * from usuarios where id = '$id_user'";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
     public function get_alimentos($id_user){
         $sql = "select * from alimentos_users where id_usuario = '$id_user'";
         $consulta = $this->conexion->prepare($sql);
@@ -180,6 +195,50 @@ class Model{
         }            
     }
 
+    public function eliminar_alimento($id_ali, $id_usuario){
+
+            $sql = "delete from alimentos_users where id = :id and id_usuario = :id_u";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute(array(":id" => $id_ali, ":id_u" => $id_usuario));
+            $consulta->closeCursor();
+       
+    }
+
+    public function get_alimento($id_ali, $id_user){
+        $sql = "select * from alimentos_users where id = '$id_ali' and id_usuario = '$id_user'";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
+    public function editar_alimento($n, $c, $t, $fc, $f, $i_u, $i){
+
+        $sql = "update alimentos_users set nombre = :n, id_categoria = :c, id_tipo = :t, fecha_caducidad = :fc, foto = :f  WHERE id_usuario = :i_u and id = :i";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":n" => $n, ":c" => $c, ":t" => $t, ":fc" => $fc, ":f" => $f, ":i_u" => $i_u, ":i" => $i));
+
+    }
+
+    public function editar_alimento_congelado($n, $c, $t, $fc, $f, $i_u, $i){
+
+        $sql = "update alimentos_users set nombre = :n, id_categoria = :c, id_tipo = :t, fecha_congelado = :fc, foto = :f  WHERE id_usuario = :i_u and id = :i";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":n" => $n, ":c" => $c, ":t" => $t, ":fc" => $fc, ":f" => $f, ":i_u" => $i_u, ":i" => $i));
+
+    }
+
+
+
+
+    /**/
 
 
     public function xx($n){
