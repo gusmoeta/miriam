@@ -1,21 +1,23 @@
-
 <?php
-
 session_start();
 
 require_once __DIR__ . '/../app/Config.php';
  require_once __DIR__ . '/../app/Model.php';
  require_once __DIR__ . '/../app/Controller.php';
- require_once __DIR__ . '/../app/vendor/autoload.php';
- require_once __DIR__ . '/../app/GoogleAuth.php';
+//  require_once __DIR__ . '/../app/vendor/autoload.php';
+//  require_once __DIR__ . '/../app/GoogleAuth.php';
 
 function comprobar_user() {
-        //session_start();
+      
         $user = $_POST['usuario'];
         $contra = $_POST['contra'];
 
         $_SESSION['usuario'] = $user;
         $_SESSION['contra'] = $contra;
+
+        // echo "sesion user" . $_SESSION['usuario'] . "<br><br>";
+        // echo "sesiin contra" . $_SESSION['contra'] . "<br><br>";
+
         $conBD = Model::singleton();
         //devuelve true o false mirar porq tiene un errorsito
         $resultado = $conBD->identifica_usuario($user, $contra);
@@ -43,8 +45,7 @@ function identificacion($mensaje="") {
 }
 
 comprobar_user();
-
-
-
-
 ?>
+
+
+

@@ -1,15 +1,19 @@
 <?php
- // web/index.php
+
+session_start();
+ //session_regenerate_id(true); //cada vez q entra cambia la coockie phpsessid de valor, seguridad
+  // web/index.php
 //  session_name("pc");
- session_start();
- session_regenerate_id(true); //cada vez q entra cambia la coockie phpsessid de valor, seguridad
+
+
+
 
  // carga del modelo y los controladores
  require_once __DIR__ . '/../app/Config.php';
  require_once __DIR__ . '/../app/Model.php';
  require_once __DIR__ . '/../app/Controller.php';
- require_once __DIR__ . '/../app/vendor/autoload.php';
- require_once __DIR__ . '/../app/GoogleAuth.php';
+//  require_once __DIR__ . '/../app/vendor/autoload.php';
+//  require_once __DIR__ . '/../app/GoogleAuth.php';
 
 
 
@@ -31,22 +35,31 @@
      'ajustes'              => array('controller' =>'Controller','action' =>'ajustes'),
      'cerrarSession'        => array('controller' =>'Controller','action' =>'cerrarSession'),
  );
-//var_dump($_REQUEST);
+
+// echo "request<br><br>";
+// var_dump($_REQUEST);
+// echo "<br><br>session<br><br>";
 // var_dump($_SESSION);
+// echo "<br><br>sesion name<br><br>";
 // var_dump(session_name());
+// echo "<br><br>sesion id<br><br>";
 // var_dump(session_id());
 // echo "<br>";
+
+// echo "sesion user " . $_SESSION['usuario'] . "<br>";
+// echo "sesiin contra " . $_SESSION['contra'];
 
 
 
     if( empty( $_SESSION['usuario']) ){     
-
-        $mensaje="";       
+      
+        $mensaje="";   
+        // echo "sesion vacia";    
        require_once '../app/templates/identificacion.php';
        
     }else{ //si session llena
      
-                  
+        // echo "sesion llena";   
             if (isset($_GET['ctl'])) {
 
                 if (isset($map[$_GET['ctl']])) {
@@ -86,5 +99,4 @@
 
     }
 
-
- 
+    

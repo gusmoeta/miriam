@@ -1,3 +1,16 @@
+<?php 
+// echo "request<br><br>";
+// var_dump($_REQUEST);
+// echo "session<br><br>";
+// var_dump($_SESSION);
+// echo "sesion name<br><br>";
+// var_dump(session_name());
+// echo "sesion id<br><br>";
+// var_dump(session_id());
+// echo "<br><br>";
+// echo "sesion user " . $_SESSION['usuario'] . "<br><br>";
+// echo "sesiin contra " . $_SESSION['contra'] . "<br><br>";
+?>
 <!DOCTYPE HTML>
     <html lang="es">
         <head>
@@ -128,4 +141,3 @@
         }
      </script> -->
  </html>
-

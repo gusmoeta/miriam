@@ -1,5 +1,5 @@
 <?php ob_start() ?>
-<?php if(session_status() == PHP_SESSION_NONE){ session_start(); }?> 	
+<?php //if(session_status() !== PHP_SESSION_ACTIVE){ session_start(); }?> 	
 	
 	<div class="tabs">
 		<ul class="tabs">
