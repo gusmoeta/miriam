@@ -26,13 +26,16 @@
 $(document).ready(function(){
   
   $(".myDropdown").hide();
+
   var cont = 1;
   $(".dots").click(function(){
     if (cont == 1) {
-      $(".myDropdown").show();
+      //$(".myDropdown").show();     
+      $(this).parent().find(".myDropdown").show();          
       cont = 0;
     }else{
-      $(".myDropdown").hide();
+       $(".myDropdown").hide();
+
       cont = 1;
     }    
   });

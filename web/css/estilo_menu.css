@@ -17,10 +17,13 @@ body {
 } 
 
 header nav {  
+  overflow-y: auto;
   width: 5%;
+  min-height: 50%;
   min-width: 200px;
   margin: 10px auto;
-  position:fixed
+  position:fixed;
+
 }
 
 .menu_bar {
@@ -34,7 +37,7 @@ header nav {
 header nav ul {
   overflow: hidden;
   list-style: none;
-  /*gus*/ 
+ 
 }
 
 /* @media screen and (max-width: 950px) {
@@ -57,7 +60,7 @@ header nav ul li:last-child a {
 header nav ul li a {
   color: #757575;
   background-color: #F5F5F5;
-  padding: 20px;
+  padding: 15px;
   display: block;
   text-decoration: none;
   border-bottom: 1px solid #BDBDBD;
@@ -80,12 +83,14 @@ header nav ul li a i {
 
 @media screen and (max-width: 950px) {
   header nav {
+    /* overflow-y: auto !important; */
     width: 25%;  
     margin: 0;
     position: fixed;
     overflow: auto;
     background-color: #F5F5F5;
     z-index: 1;
+   
   }
 
   header nav ul li {

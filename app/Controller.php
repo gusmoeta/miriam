@@ -358,7 +358,7 @@
             }
         }
 
-        var_dump($usuario);
+        //var_dump($usuario);
     }
 
     public function eliminar_alimento() {
