@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	
+	//porq doble la igualacion si en js no hay problema con ambito creo
 	var ventana_ancho = $(window).width();
 	var ventana_alto = $(window).height();
 

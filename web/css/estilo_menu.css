@@ -17,7 +17,7 @@ body {
 } 
 
 header nav {  
-  overflow-y: auto;
+  overflow-y: auto; /* NO VA*/
   width: 5%;
   min-height: 50%;
   min-width: 200px;

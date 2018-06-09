@@ -302,58 +302,52 @@
     }
 
     public function caducados() {
-        $conBD = Model::singleton();
-        self::mandar_mail();
+        $conBD = Model::singleton();        
         $params = array(
             "titulo" => "Caducados", 
             "resultado" => $conBD->get_alimentos($_SESSION['id_usuario']));
         require __DIR__ . '/templates/caducados.php';        
+        self::mandar_mail();
     }
 
     public function mandar_mail() {
         $conBD = Model::singleton();
         $alimentos = $conBD->get_alimentos($_SESSION['id_usuario']);
         $usuario = $conBD->get_usuario($_SESSION['id_usuario']);
+        //var_dump($_SESSION);
         $to = $usuario[0]["correo"];
         $nombre = $usuario[0]["nombre"];
-        
         foreach ($alimentos as $alimento){
             $fecha_cad = $alimento['fecha_caducidad'];
             $fecha_hoy = date("Y-m-d");
             $datetime1 = date_create($fecha_hoy);
             $datetime2 = date_create($fecha_cad);
             $interval = date_diff($datetime1, $datetime2);
-            if ($interval->format('%r%a días')<5 && $interval->format('%r%a días')>0) {
-                echo $alimento['nombre'];
+            //echo($interval->format('%r%a') . "<br>");
+            if ($interval->format('%r%a')<5 && $interval->format('%r%a')>0) {
+                //echo $alimento['nombre'];
                 try{
-                    /*$mail=new PHPMailer(true);
+                    $mail = new PHPMailer\PHPMailer\PHPMailer();
+                    $mail->IsSMTP(); // enable SMTP
                     $mail->CharSet = 'UTF-8';                
-                    $body = 'Tu(s) $alimento["nombre"] va(n) a caducar próximamente.';                
-                    $mail->IsSMTP();
-                    $mail->Host       = 'smtp.gmail.com';
+                    $body = 'Tu(s) ' . strtolower($alimento["nombre"]) . ' va(n) a caducar en ' . $interval->format('%r%a día(s)') . " www.google.com";                
+                    $mail->Host       = 'smtp.sparkpostmail.com';
                     $mail->SMTPSecure = 'tls';
-                    $mail->Port       = 587;
+                    $mail->Port       = 2525;
                     $mail->SMTPDebug  = 1;
                     $mail->SMTPAuth   = true;
-                    $mail->Username   = 'caducidad_alimentos@gmail.com';
-                    $mail->Password   = 'c4d4l1m3nt0s';
-                    $mail->SetFrom('caducidad_alimentos@gmail.com', "admin");
+                    $mail->Username   = 'SMTP_Injection';
+                    $mail->Password   = 'edcda7fafff45e493d12fb825c972130347dc403';
+                    $mail->SetFrom('admin@caducidadalimentos.es', 'Caducali');
                     $mail->AddReplyTo('no-reply@mycomp.com','no-reply');
                     $mail->Subject    = 'Tu alimento va a caducar';
                     $mail->MsgHTML($body);
                     
                     $mail->AddAddress($to, $nombre);
-                    $mail->send();*/
-                    $titulo = 'Tu alimento va a caducar';
-                    $mensaje = 'Tu(s) ' . $alimento["nombre"] . 'va(n) a caducar próximamente.'; 
-                    $cabeceras = 'From: caducidad.alimentos@gmail.com' . "\r\n" .
-                        'Reply-To: caducidad.alimentos@gmail.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                    
-                    //mail($to, $titulo, $mensaje, $cabeceras);
+                    $mail->send();
 
                 } catch (Exception $e) {
-                    echo 'Message could not be sent. Mailer Error: '/*, $mail->ErrorInfo*/;
+                    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
                 }
             }
         }
@@ -406,7 +400,8 @@
                         // var_dump($fecha_cad);
                 //header('refresh:3;url=index.php?ctl=anadir_alimento');
         }
-        require __DIR__ . '/templates/editar_alimento.php';       
+        require __DIR__ . '/templates/editar_alimento.php';    
+        //no redirigir a editar alimento sino a header inicio!!!   
     }
 
     public function categorias() {

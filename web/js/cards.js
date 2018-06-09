@@ -28,6 +28,7 @@ $(document).ready(function(){
   $(".myDropdown").hide();
 
   var cont = 1;
+  
   $(".dots").click(function(){
     if (cont == 1) {
       //$(".myDropdown").show();     
@@ -39,8 +40,6 @@ $(document).ready(function(){
       cont = 1;
     }    
   });
-
-
 });
 
 

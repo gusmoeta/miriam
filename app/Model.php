@@ -1,21 +1,22 @@
 <?php
-
 class Model{
 
     protected $conexion;
-    private static $instancia;
-    public function __construct(){
+    private static $instancia = null;
+
+    //  El constructor establece la conección con la BBDD
+    private function __construct(){
         try {
 
-        $this->conexion = new PDO(Config::$mvc_bd_hostname, Config::$mvc_bd_usuario, Config::$mvc_bd_clave);
-        $this->conexion->exec(Config::$caract);
-        $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conexion = new PDO(Config::$mvc_bd_hostname, Config::$mvc_bd_usuario, Config::$mvc_bd_clave);
+            $this->conexion->exec(Config::$caract);
+            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
          
         } catch (Exception $e) {
          die("Error: " . $e->getMessage());
         }
     }
-
+    // Uso del pratron singleton para reducir el número de conecciones y uso de memoria
     public static function singleton(){
         
         if (!isset(self::$instancia)) {
@@ -25,6 +26,7 @@ class Model{
         return self::$instancia;
     }
 
+    // Evitamos clonacion de
     public function __clone(){
         
         trigger_error("La clonación de este objeto no está permitida", E_USER_ERROR);
@@ -227,6 +229,7 @@ class Model{
 
     }
 
+    //ESTE METODO NO ESTA EN USO
     public function editar_alimento_congelado($n, $c, $t, $fc, $f, $i_u, $i){
 
         $sql = "update alimentos_users set nombre = :n, id_categoria = :c, id_tipo = :t, fecha_congelado = :fc, foto = :f  WHERE id_usuario = :i_u and id = :i";

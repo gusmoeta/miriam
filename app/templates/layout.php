@@ -92,7 +92,7 @@
             </header>
 
             <div id="contenido">
-            <h3 class="titulo tit2"><?php echo $params['titulo'] ?></h3>
+           
                 <?php echo $contenido ?>
             </div>
 
