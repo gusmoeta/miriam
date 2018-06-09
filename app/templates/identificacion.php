@@ -1,6 +1,8 @@
 <?php ob_start() ?>
 <?php //if(session_status() !== PHP_SESSION_ACTIVE){ session_start(); }?> 	
-	
+<div>
+	<h2>CADUCALIA</h2><img src="../web/images/icon.png">
+</div>
 	<div class="tabs">
 		<ul class="tabs">
 			<li class="current">
@@ -53,7 +55,7 @@
 			</div>
 			<div class="social-login">
 				<a href="#">
-				<i class="fa fa-google-plus-square"></i>
+				<i class="fab fa-google-plus-square fa-lg"></i>
 					Entrar con Google
 				</a>
 			</div>

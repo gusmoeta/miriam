@@ -76,6 +76,24 @@ class Model{
         return $res;
     }
 
+    public function mod_contra($c, $i){
+        $sql = "update usuarios set contraseña = :c WHERE id = :i";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":c" => $c, ":i" => $i));
+    }
+
+    public function mod_email($e, $i){
+        $sql = "update usuarios set correo = :e WHERE id = :i";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":e" => $e, ":i" => $i));
+    }
+
+    public function eliminar_user($i){
+        $sql = "delete from usuarios WHERE id = :i";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":i" => $i));
+    }
+
     public function get_usuario($id_user){
         $sql = "select * from usuarios where id = '$id_user'";
         $consulta = $this->conexion->prepare($sql);

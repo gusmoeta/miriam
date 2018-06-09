@@ -1,7 +1,9 @@
 <?php ob_start(); //var_dump($_SESSION);?>
 
 				<div class="cards">
+				
 					<div class="content-buscar2">
+					<h3 class="titulo tit2"><?php echo $params['titulo'] ?></h3>
 						<div class="input-group buscar2">
 							<form action="index.php?ctl=buscar_alimento" method="POST">
 								<input type="search" name="buscar" placeholder="Buscar alimento">

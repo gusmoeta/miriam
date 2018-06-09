@@ -45,6 +45,7 @@
             <script type="text/javascript" src="../web/js/cards.js"></script>
             <script type="text/javascript" src="../web/js/formularios.js"></script>
             <script type="text/javascript" src="../web/js/menu.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             </head>
             
             <body>     

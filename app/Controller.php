@@ -17,10 +17,9 @@
 
 
 
-    // public function identificacion($mensaje="") {        
-    //     $mensaje;
-    //     require __DIR__ . '/templates/identificacion.php';        
-    // }
+    public function identificacion() {        
+         require __DIR__ . '../templates/identificacion.php';        
+    }
 
     // public function comprobar_user() {
     //     //session_start();
@@ -51,10 +50,64 @@
         $resultado = $conBD->get_user($user);
     }*/
 
+    //OPCIONES DE USUARIO
     public function perfil_usuario() {
         $params = array("titulo" => "Perfil de usuario");
+        $success = " ";
+        $error = " ";
         require __DIR__ . '/templates/perfil_usuario.php';      
     }
+
+    public function cambiar_contra(){
+        $params = array("titulo" => "Perfil de usuario");
+        $conBD = Model::singleton();
+        $res = $conBD->get_usuario($_SESSION["id_usuario"]);
+        $contraAntigua = $res[0]["contraseña"];
+        $contraAntiguaConfirm = $_POST["contra_actual"];
+        if ($contraAntigua == $contraAntiguaConfirm){
+            if ($_POST["contra_nueva1"] == $_POST["contra_nueva2"]){
+                $conBD->mod_contra($_POST["contra_nueva1"], $_SESSION['id_usuario']);
+                $success = "Tu contraseña se ha actualizado";
+                $error = "";
+            }else{
+                $error = "Tus contraseñas no coinciden.";
+                $success ="";
+            }
+        }else{
+            $error = "Tu contraseña actual no coincide.";
+            $success ="";
+        }        
+        require __DIR__ . '/templates/perfil_usuario.php'; 
+    }
+
+    public function cambiar_correo(){
+        $params = array("titulo" => "Perfil de usuario");
+        $conBD = Model::singleton();
+        $res = $conBD->get_usuario($_SESSION["id_usuario"]);
+        $emailAntiguo = $res[0]["correo"];
+        $emailAntiguoConfirm = $_POST["email_actual"];
+        if ($emailAntiguo == $emailAntiguoConfirm){
+            $conBD->mod_email($_POST["email_nuevo"], $_SESSION['id_usuario']);
+            $success = "Tu email se ha actualizado";
+            $error = "";
+        }else{
+            $error = "Tu email actual no coincide.";
+            $success ="";
+        }        
+        require __DIR__ . '/templates/perfil_usuario.php'; 
+    }
+
+    public function eliminar_usuario(){
+        $params = array("titulo" => "Perfil de usuario");
+        $success = " ";
+        $error = " ";
+        $conBD = Model::singleton();
+        $res = $conBD->eliminar_user($_SESSION["id_usuario"]);
+        header('refresh:3;url=index.php?ctl=indentificacion');    
+    }
+
+
+//INSERT INTO `usuarios`(`id`, `nombre`, `nombre_google`, `correo`, `contraseña`, `fecha_alta`) VALUES (UUID(), 'admin', null, 'admin@correo.es', '1234', curdate())
 
     //VER ALIMENTOS 
 

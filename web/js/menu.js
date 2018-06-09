@@ -71,4 +71,10 @@ $(document).ready(function(){
 		}		
 	});
 
+
+
+	// $("li").click(function(){
+	// 	$(this).css("background-color", "#8BC34A");
+	// });
+
 });

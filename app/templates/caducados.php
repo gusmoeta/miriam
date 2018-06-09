@@ -3,6 +3,7 @@
                 
                 <!-- TARJETAS DE PRUEBA -->
 				<div class="cards">
+				<h3 class="titulo tit2"><?php echo $params['titulo'] ?></h3>
 					<ul class="card_list" id="card_list">
 						<?php if ($params['resultado'] == "No hay registros en esta tabla"): ?>
 							<p>Aun no has añadido ningún alimento</p>

@@ -1,7 +1,20 @@
 <?php ob_start() ?>
 
 
-
+			<div class="contenedor_form">
+				<div class="wrap_form">
+					<form action="index.php?ctl=categorias" method="POST" class="formulario" name="formu">
+						<div>
+							<div class="input-group">
+								<input type="text" name="nombre_cat" id="nombre_cat" placeholder="Añade una categoría">
+							</div>
+							<div class="btn-input">
+								<input type="submit" value="Añadir" name="btn_anadir_ali" id="btn_anadir_ali">
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
 
 
 			<div class="cards">
@@ -88,21 +101,7 @@
 					<?php endif; ?>		
 				</ul>
 			</div>
-			<div class="contenedor_form">
-				<div class="wrap_form">
-					<form action="index.php?ctl=categorias" method="POST" class="formulario" name="formu">
-						<div>
-							<div class="input-group">
-								<input type="text" name="nombre_cat" id="nombre_cat">
-								<label class="label" for="nombre_cat">Nombre</label>
-							</div>
-							<div class="btn-input">
-								<input type="submit" value="Añadir" name="btn_anadir_ali" id="btn_anadir_ali">
-							</div
-						</div>
-					</form>
-				</div>
-			</div>
+
 			
 
 <?php $contenido = ob_get_clean() ?>

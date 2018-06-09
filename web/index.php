@@ -23,9 +23,9 @@ session_start();
  // enrutamiento
  $map = array(
     'registro'             => array('controller' =>'Controller','action' =>'registro'),
-   //  'identificacion'       => array('controller' =>'Controller','action' =>'identificacion'),   
-    // 'comprobar_user'       => array('controller' =>'Controller','action' =>'comprobar_user'),
-     'comprobarUserGoogle'  => array('controller' =>'Controller','action' =>'comprobarUserGoogle'),
+    'identificacion'       => array('controller' =>'Controller','action' =>'identificacion'),   
+     //'comprobar_user'       => array('controller' =>'Controller','action' =>'comprobar_user'),
+     //'comprobarUserGoogle'  => array('controller' =>'Controller','action' =>'comprobarUserGoogle'),
      'inicio'               => array('controller' =>'Controller','action' =>'inicio'),
      'buscar_alimento'      => array('controller' =>'Controller','action' =>'buscar_alimento'),
      'anadir_alimento'      => array('controller' =>'Controller','action' =>'anadir_alimento'),
@@ -37,6 +37,9 @@ session_start();
      'categorias'           => array('controller' =>'Controller','action' =>'categorias'),
      'calendario'           => array('controller' =>'Controller','action' =>'calendario'),
      'perfil_usuario'       => array('controller' =>'Controller','action' =>'perfil_usuario'),
+     'cambiar_contra'       => array('controller' =>'Controller','action' =>'cambiar_contra'),
+     'cambiar_correo'       => array('controller' =>'Controller','action' =>'cambiar_correo'),
+     'eliminar_usuario'     => array('controller' =>'Controller','action' =>'eliminar_usuario'),
      'ajustes'              => array('controller' =>'Controller','action' =>'ajustes'),
      'cerrarSession'        => array('controller' =>'Controller','action' =>'cerrarSession'),
  );
@@ -77,10 +80,8 @@ session_start();
                     exit;
                 }
 
-            } else {
-                
-                $ruta = 'inicio';
-                       
+            } else {                
+                $ruta = 'inicio';                       
             }
 
             $controlador = $map[$ruta];

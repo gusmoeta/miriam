@@ -21,6 +21,8 @@ div.wrap_form {
       margin-bottom: 35px; }
       div.wrap_form .formulario .input-group input[type="text"],
       div.wrap_form .formulario .input-group input[type="date"],
+      div.wrap_form .formulario .input-group input[type="email"],
+      div.wrap_form .formulario .input-group input[type="password"],
       div.wrap_form .formulario .input-group select {
         font-family: "Roboto", Arial;
         font-size: 15px;
@@ -34,16 +36,24 @@ div.wrap_form {
         div.wrap_form .formulario .input-group input[type="text"]:focus, div.wrap_form .formulario .input-group input[type="text"]:active,
         div.wrap_form .formulario .input-group input[type="date"]:focus,
         div.wrap_form .formulario .input-group input[type="date"]:active,
+        div.wrap_form .formulario .input-group input[type="email"]:focus,
+        div.wrap_form .formulario .input-group input[type="email"]:active,
+        div.wrap_form .formulario .input-group input[type="password"]:focus,
+        div.wrap_form .formulario .input-group input[type="password"]:active,
         div.wrap_form .formulario .input-group select:focus,
         div.wrap_form .formulario .input-group select:active {
           outline: none;
           border-bottom: 2px solid #8BC34A; }
         div.wrap_form .formulario .input-group input[type="text"].error,
         div.wrap_form .formulario .input-group input[type="date"].error,
+        div.wrap_form .formulario .input-group input[type="email"].error,
+        div.wrap_form .formulario .input-group input[type="password"].error,
         div.wrap_form .formulario .input-group select.error {
           border-bottom: 2px solid #D32F2F; }
           div.wrap_form .formulario .input-group input[type="text"].error + label,
           div.wrap_form .formulario .input-group input[type="date"].error + label,
+          div.wrap_form .formulario .input-group input[type="email"].error + label,
+          div.wrap_form .formulario .input-group input[type="password"].error + label,
           div.wrap_form .formulario .input-group select.error + label {
             color: #D32F2F; }
       div.wrap_form .formulario .input-group label {
@@ -79,6 +89,9 @@ div.wrap_form {
 
 .error {
   color: #D32F2F; }
+
+.success {
+  color: #8BC34A; }
 
 @media screen and (max-width: 950px) {
   div.wrap_form {
