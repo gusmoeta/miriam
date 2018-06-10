@@ -27,7 +27,6 @@
             <link rel="stylesheet" href="../web/toaster/css/jquery.notify.css">
             <link rel="stylesheet" href="../web/css/estilo_menu.css">
             <link rel="stylesheet" href="../web/css/estilo_card.css">
-            <!-- <link rel="stylesheet" href="../web/css/estilo_card2.css"> -->
             <link rel="stylesheet" href="../web/css/estilo_forms.css">
             <link rel="stylesheet" href="../web/css/estilo_categorias.css">
             <link rel="stylesheet" href="../web/css/estilo_perfil.css">
@@ -46,6 +45,8 @@
             <script type="text/javascript" src="../web/js/formularios.js"></script>
             <script type="text/javascript" src="../web/js/menu.js"></script>
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
             </head>
             
             <body>     

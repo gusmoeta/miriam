@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	//cambio de formularios login - registro
 	$(".wrap_form_registro").hide();
 
 	$(".tabs li:last-of-type").click(function (){
@@ -17,14 +18,40 @@ $(document).ready(function(){
 	});
 
 
-
-
-
+	//poner arriba del input los label y hacerlos pequeños, y poner en rojo los input si se seleccionan y se dejan vacios
 	var formulario = document.forms, 
 		elementos1 = formulario[0].elements,
 		elementos2 = formulario[1].elements;
 
+	function focusInput(){
+		this.parentElement.children[1].className = "label active";
+		this.parentElement.children[0].className = this.parentElement.children[0].className.replace("error", "");
+	}
 
+	function blurInput(){
+		if (this.value <= 0){
+			this.parentElement.children[1].className = "label";
+			this.parentElement.children[0].className = this.parentElement.children[0].className + " error";
+		}
+	}
+
+	for (var i = 0; i < elementos1.length; i++) {
+		if (elementos1[i].type == "text" || elementos1[i].type == "email" ||elementos1[i].type == "password"){
+			elementos1[i].addEventListener("focus", focusInput);
+			elementos1[i].addEventListener("blur", blurInput);
+		}
+	}
+
+	for (var i = 0; i < elementos2.length; i++) {
+		if (elementos2[i].type == "text" || elementos2[i].type == "email" ||elementos2[i].type == "password"){
+			elementos2[i].addEventListener("focus", focusInput);
+			elementos2[i].addEventListener("blur", blurInput);
+		}
+	}
+
+
+	//validaciones a nivel cliente, no se por qué de repente petan...
+	/*
 	function validarInputsSesion() {
 		for (var i = 0; i < elementos1.length; i++) {
 			if (elementos1[i].type == "text" || elementos1[i].type == "email" ||elementos1[i].type == "password") {
@@ -49,7 +76,6 @@ $(document).ready(function(){
 			console.log('enviado correctamente');
 		}
 	}
-
 
 	function validarInputsRegistro() {
 		for (var i = 0; i < elementos1.length; i++) {
@@ -77,7 +103,6 @@ $(document).ready(function(){
 		}
 	}
 
-
 	function enviarRegistro(e){
 		if (!validarInputsRegistro()){
 			console.log('inputs no validados');
@@ -87,37 +112,7 @@ $(document).ready(function(){
 		}
 	}
 
-	function focusInput(){
-		this.parentElement.children[1].className = "label active";
-		this.parentElement.children[0].className = this.parentElement.children[0].className.replace("error", "");
-	}
-
-	function blurInput(){
-		if (this.value <= 0){
-			this.parentElement.children[1].className = "label";
-			this.parentElement.children[0].className = this.parentElement.children[0].className + " error";
-		}
-	}
-
 	formulario[0].addEventListener("submit", enviarSesion);
 	formulario[1].addEventListener("submit", enviarRegistro);
-
-	for (var i = 0; i < elementos1.length; i++) {
-		if (elementos1[i].type == "text" || elementos1[i].type == "email" ||elementos1[i].type == "password"){
-			elementos1[i].addEventListener("focus", focusInput);
-			elementos1[i].addEventListener("blur", blurInput);
-		}
-	}
-
-	for (var i = 0; i < elementos2.length; i++) {
-		if (elementos2[i].type == "text" || elementos2[i].type == "email" ||elementos2[i].type == "password"){
-			elementos2[i].addEventListener("focus", focusInput);
-			elementos2[i].addEventListener("blur", blurInput);
-		}
-	}
-
-
-
-
-
+	*/
 });

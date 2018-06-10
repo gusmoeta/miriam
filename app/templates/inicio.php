@@ -45,7 +45,7 @@
 											</div>
 											<div class="info-alimento">
 												<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-												<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+												<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 											</div>
 											<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i>  Hace <?php echo $interval->format('%a días'); ?></div>
 											<!-- three dots --><div class="dots"></div>
@@ -76,7 +76,7 @@
 																		</div>
 																		<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+																			<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
 																		<!-- three dots --><div class="dots"></div>
@@ -96,7 +96,7 @@
 																		</div>
 																			<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+																			<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div>
 																		<!-- three dots --><div class="dots"></div>
@@ -122,7 +122,7 @@
 																</div>
 																<div class="info-alimento">
 																	<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-																	<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+																	<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																</div>
 																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
 																<!-- three dots --><div class="dots"></div>
@@ -158,7 +158,7 @@
 																		</div>
 																		<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+																			<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_nevera.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
 																		<!-- three dots --><div class="dots"></div>
@@ -184,7 +184,7 @@
 																		</div>
 																		<div class="info-alimento">
 																			<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-																			<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+																			<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php //echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																		</div>
 																		<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_congelado.ico" class="tipoImg"></div> <?php echo date('d/m/Y', strtotime($fecha_congelado)); ?></div>
 																		<!-- three dots --><div class="dots"></div>
@@ -210,7 +210,7 @@
 																</div>
 																<div class="info-alimento">
 																	<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-																	<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
+																	<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php echo date("d/m/Y", strtotime($alimento['fecha_caducidad'])) ?></p>
 																</div>
 																<div class="info-dias"><div class="tipoAzul"><img src="../web/images/tipos/tipo_despensa.ico" class="tipoImg"></div> Quedan <?php echo $interval->format('%a días'); ?></div>
 																<!-- three dots --><div class="dots"></div>
@@ -226,7 +226,11 @@
 							<?php endforeach; ?> <!-- fin impresion de tarjetas de la bbdd -->
 						<?php endif; ?> <!-- fin if si no hay registros -->
 					</ul><!-- fin ul -->
-					
+					<?php if (isset($_REQUEST['ctl'])): ?>
+						<?php if ($_REQUEST['ctl'] == "buscar_alimento"): ?>
+							<p style="font-size:12px; text-align:right">Se ha(n) encontrado <?php echo count($params['resultado']) ?> resultado(s)</p>
+						<?php endif; ?>
+					<?php endif; ?>
 				</div> <!-- fin class card -->
 
 <?php $contenido = ob_get_clean() ?>

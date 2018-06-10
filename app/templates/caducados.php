@@ -1,6 +1,4 @@
-<?php ob_start() ?>               
-                
-                
+<?php ob_start() ?>                                  
                 <!-- TARJETAS DE PRUEBA -->
 				<div class="cards">
 				<h3 class="titulo tit2"><?php echo $params['titulo'] ?></h3>
@@ -30,29 +28,27 @@
 													<!-- menu -->
 													<div class="myDropdown dropdown-content">
 														<a href="index.php?ctl=editar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-edit"style="margin-right: 15px"></i>Editar</a>
-														<a href="index.php?ctl=eliminar_alimento&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
+														<a href="index.php?ctl=eliminar_caducado&id_ali=<?php echo $alimento['id'] ?>"><i class="fas fa-trash" style="margin-right: 15px"></i>Eliminar</a>
 													</div>
 												</div>
 
 												<div class="info-alimento">
 													<img class="info-foto" src="<?php echo "../web/fotos/" . $alimento['foto'] ?>" alt="">
-													<p class="info-nombre_alimento"><small><?php echo $alimento['nombre'] ?></small><br><?php echo $alimento['fecha_caducidad'] ?></p>
+													<p class="info-nombre_alimento"><small><?php echo ucfirst($alimento['nombre']) ?></small><br><?php echo $alimento['fecha_caducidad'] ?></p>
 												</div>
-											<!-- si la fecha es negativa y es 0 significa hoy-->
-												<?php if($interval->format('%a días') == 0): ?>
-													<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i><?php echo "Hoy" ?></div>
-											<!-- si la fecha es negativa y es  significa ayer-->
-												<?php elseif($interval->format('%a días') == 1): ?>
-													<div class="info-dias">
-														<i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i><?php echo "Ayer" ?> 
-													</div>		
-												<?php endif; ?>
 
-												<div class="info-dias">
-													<i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i>
-													<?php echo $interval->format('%a días') ?>
-												</div>
-												<!-- three dots --><div class="dots" id="punto_<?php echo $contadordots; ?>"></div>
+													<div class="info-dias"><i class="fas fa-exclamation-triangle fa-fw" style="margin-right: 10px; color:#D32F2F;"></i>
+														<!-- si la fecha es negativa y es 0 significa hoy-->
+														<?php if($interval->format('%a días') == 0): ?>
+														<?php echo "Hoy" ?>
+														<!-- si la fecha es negativa y es  significa ayer-->
+														<?php elseif($interval->format('%a días') == 1): ?>
+														<?php echo "Ayer" ?>
+														<?php else: ?>
+														<?php echo $interval->format('%a días') ?>
+														<?php endif; ?>
+													</div>
+													<!-- three dots --><div class="dots" id="punto_<?php echo $contadordots; ?>"></div>
 											</div>
 										</li>
 								<?php endif; ?> <!-- si fecha caducidad esta true (si no hay devuelve falso?) -->

@@ -1,7 +1,9 @@
 <?php ob_start() ?>
 <?php //if(session_status() !== PHP_SESSION_ACTIVE){ session_start(); }?> 	
-<div>
-	<h2>CADUCALIA</h2><img src="../web/images/icon.png">
+<div class="barra">
+	<div class="logo">
+		<h2>CADUCALIA</h2><img src="../web/images/logo.png">
+	</div>
 </div>
 	<div class="tabs">
 		<ul class="tabs">
@@ -18,13 +20,14 @@
 				<form action="comprobarUserFunction.php" method="POST" class="formulario" name="formu">
 					<div>
 						<div class="input-group">
-							<input type="text" name="usuario" id="usuario" autofocus>
+							<input type="text" name="usuario" id="usuario">
 							<label class="label" for="usuario">Nombre o Email</label>
 						</div>
 						<div class="input-group">
 							<input type="password" name="contra" id="contra">
 							<label class="label" for="contra">Contraseña</label>
 						</div>
+						<span class="error" style="margin-bottom:5px"><?php echo $mensaje ?></span>
 						<input type="submit" value="Enviar" name="btn_sesion" id="btn_sesion">
 					</div>
 				</form>
@@ -49,6 +52,7 @@
 							<input type="password" name="passr" id="passr">
 							<label class="label" for="passr">Repite la contraseña</label>
 						</div>
+						<span class="error" style="margin-bottom:5px"><?php echo $mensaje ?></span>
 						<input type="submit" value="Enviar" name="btn_registro" id="btn_registro">
 					</div>
 				</form>
@@ -61,7 +65,6 @@
 			</div>
 	</div>
 
-	<span class="error"><?php echo $mensaje ?></span>
 
 </form>
 

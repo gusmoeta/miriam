@@ -12,7 +12,10 @@ div.contenedor_form {
 div.wrap_form {
   width: 100%;
   color: #f2f2f2;
-  padding: 80px 100px; }
+  padding: 30px; }
+  div.wrap_form h3 {
+    color: #212121;
+    margin-bottom: 23px; }
   div.wrap_form .formulario {
     width: 100%;
     margin: auto; }

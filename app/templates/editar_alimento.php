@@ -1,9 +1,7 @@
 <?php ob_start() ?>
-
-
 			<div class="contenedor_form">
-			<h3 class="titulo tit2"><?php echo $params['titulo'] ?></h3>
 				<div class="wrap_form">
+				<h3 class="titulo tit2"><?php echo $params['titulo'] ?></h3>
 					<form action="index.php?ctl=editar_alimento" method="POST" class="formulario" name="formu" enctype="multipart/form-data">
 						<div>
 							<div class="input-group">

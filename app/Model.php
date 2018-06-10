@@ -36,17 +36,66 @@ class Model{
     ///////////////////////////////////////////////////////////////////
 
 
-    public function inserta_usuario($n, $e, $c) {
+    public function inserta_usuario_temp($n, $e, $c, $co) {
         try{
-            $sql = "insert into usuarios (id, nombre, nombre_google, correo, contraseña, fecha_alta) 
-                    values (UUID(), :n, null, :e, :c, curdate())";
+            $sql = "insert into usuarios_temporal (id, nombre, correo, contraseña, fecha_reg_temp, codigo) 
+                    values (UUID(), :n, :e, :c, curdate(), :co)";
             $consulta = $this->conexion->prepare($sql);
-            $consulta->execute(array(":n" => $n, ":e" => $e, ":c" => $c));
+            $consulta->execute(array(":n" => $n, ":e" => $e, ":c" => $c, ":co" => $co));
             $consulta->closeCursor();
             $insertado = true;
         } catch (Exception $e) {
             die("Error: " . $e->getMessage());
         }  
+    }
+
+    public function inserta_usuario($i, $n, $e, $c, $f) {
+        try{
+            $sql = "insert into usuarios (id, nombre, correo, nombre_google, contraseña, fecha_alta) 
+                    values (:i, :n, :e, null, :c, :f)";
+            $consulta = $this->conexion->prepare($sql);
+            $consulta->execute(array(":i" => $i, ":n" => $n, ":e" => $e, ":c" => $c, ":f" => $f));
+            $consulta->closeCursor();
+            $insertado = true;
+        } catch (Exception $e) {
+            die("Error: " . $e->getMessage());
+        }  
+    }
+
+    public function get_usuarios(){
+        $sql = "select * from usuarios";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
+    public function get_usuario_temp($c){
+        $sql = "select * from usuarios_temporal where codigo = :c";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":c" => $c));
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
+    public function eliminar_user_temp($c){
+        $sql = "delete from usuarios_temporal WHERE codigo = :c";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute(array(":c" => $c));
     }
 
     public function identifica_usuario($user, $contra) {
@@ -75,7 +124,8 @@ class Model{
         }
         return $res;
     }
-
+    
+    //opciones de usuario
     public function mod_contra($c, $i){
         $sql = "update usuarios set contraseña = :c WHERE id = :i";
         $consulta = $this->conexion->prepare($sql);
@@ -109,6 +159,7 @@ class Model{
         return $res;
     }
 
+    //alimentos
     public function get_alimentos($id_user){
         $sql = "select * from alimentos_users where id_usuario = '$id_user'";
         $consulta = $this->conexion->prepare($sql);
@@ -126,7 +177,7 @@ class Model{
 
     public function buscarAlimento($nombre, $id_user){       
     
-        $sql = "select * from alimentos_users where nombre like concat(:nom,'%' ) and id_usuario = '$id_user'";  
+        $sql = "select * from alimentos_users where nombre like concat('%',:nom,'%' ) and id_usuario = '$id_user'";  
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute(array(":nom" => $nombre));
         $x = array();

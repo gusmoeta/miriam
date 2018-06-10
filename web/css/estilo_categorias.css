@@ -51,5 +51,8 @@
     width: 100%;
     height: 100%;
     float: none; } }
+div.categoriasform {
+  padding-top: 30px;
+  padding-bottom: 5px; }
 
 /*# sourceMappingURL=estilo_categorias.css.map */

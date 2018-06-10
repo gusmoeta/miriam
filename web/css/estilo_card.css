@@ -1,13 +1,11 @@
 @charset "UTF-8";
 .cards {
-  margin-top: "100px";
   width: 50%;
   background: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  padding: 20px; }
+  padding: 30px; }
 
 .card_list {
-  padding: 0.5rem;
   list-style-type: none; }
 
 @media screen and (max-width: 950px) {

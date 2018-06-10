@@ -28,7 +28,7 @@ $font-family: "Roboto", Arial
 body
 	background: $white
 	font-family: $font-family
-	border-top: 30px solid $primary-color
+	//border-top: 30px solid $primary-color
 
 
 div.tabs
@@ -183,3 +183,30 @@ ul.tabs a
 
 .error
 	color: $error
+
+
+.barra
+	height: 60px
+	width: auto
+	background-color: $primary-color
+	img
+		height: 50px
+		width: 50px
+		float: right
+		position: relative
+		top: -25px
+
+.logo h2
+	width: 130px
+	position: relative
+	top: 15px
+	font-weight: normal
+
+.logo
+	width: 200px
+	//left: 100px
+	margin-left: 100px
+
+@media screen and (max-width: 950px)
+	.logo
+		margin: auto

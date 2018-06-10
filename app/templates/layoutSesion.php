@@ -9,6 +9,7 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
         <!-- ESTILOS -->
         <link rel="stylesheet" href="../web/css/estilo_sesion.css">
         <link rel="stylesheet" href="../web/css/color-icon.less">

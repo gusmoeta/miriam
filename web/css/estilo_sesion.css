@@ -7,8 +7,7 @@
 
 body {
   background: #f2f2f2;
-  font-family: "Roboto", Arial;
-  border-top: 30px solid #8BC34A; }
+  font-family: "Roboto", Arial; }
 
 div.tabs {
   width: 90%;
@@ -144,5 +143,30 @@ ul.tabs a {
 
 .error {
   color: #D32F2F; }
+
+.barra {
+  height: 60px;
+  width: auto;
+  background-color: #8BC34A; }
+  .barra img {
+    height: 50px;
+    width: 50px;
+    float: right;
+    position: relative;
+    top: -25px; }
+
+.logo h2 {
+  width: 130px;
+  position: relative;
+  top: 15px;
+  font-weight: normal; }
+
+.logo {
+  width: 200px;
+  margin-left: 100px; }
+
+@media screen and (max-width: 950px) {
+  .logo {
+    margin: auto; } }
 
 /*# sourceMappingURL=estilo_sesion.css.map */
