@@ -19,8 +19,8 @@
                       Cambiar email
                       </button></div>
                       <div class="follow eliminar">
-                        <form method="POST" action="index.php?ctl=eliminar_usuario" class="formu">
-                          <button type="submit" href="" id="eliminar_user">Eliminar usuario</button>
+                        <form method="POST" action="index.php?ctl=eliminar_usuario" class="formu" onsubmit="return confirmar();">
+                          <button type="submit" id="eliminar_user">Eliminar usuario</button>
                         </form>
                       </div>   
                     </div>    
@@ -28,24 +28,28 @@
                 </div>
 
                 <script>
-                  $(".fomu").validate({
-                    swal({
-                      title: "Are you sure?",
-                      text: "Once deleted, you will not be able to recover this imaginary file!",
-                      icon: "warning",
-                      buttons: true,
-                      dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                      if (willDelete) {
-                        swal("Poof! Your imaginary file has been deleted!", {
-                          icon: "success",
-                        });
-                      } else {
-                        swal("Your imaginary file is safe!");
-                      }
-                    });
-                  });
+                    // function hola(){
+                    //   swal({
+                    //   title: "Are you sure?",
+                    //   text: "Once deleted, you will not be able to recover this imaginary file!",
+                    //   icon: "warning",
+                    //   buttons: true,
+                    //   dangerMode: true,
+                    // })
+                    // .then((willDelete) => {
+                    //   if (willDelete) {
+                    //     swal("Poof! Your imaginary file has been deleted!", {
+                    //       icon: "success",
+                    //     });
+                    //   } else {
+                    //     swal("Your imaginary file is safe!");
+                    //   }
+                    // });
+                    // }
+                    
+                    function confirmar(){
+                      return confirm("¿Estás seguro de que nos quieres abandonar? :(");
+                    }
                 </script>
 
 

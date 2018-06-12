@@ -41,7 +41,7 @@
 								<label class="label" for="fecha_cad">Fecha de caducidad</label>
 							</div>
 							<div class="input-group">
-								<input type="file" name="imagen_ali" id="imagen_ali" style="color: grey">
+								<input type="file" name="imagen_ali" id="imagen_ali" style="color: #757575">
 								<img class="foto" style="height:50px; width:50px; border-radius:50px; margin-left: 15px;" src="../web/fotos/<?php echo $params['alimento'][0]['foto']?>" alt="">
 
 								<label class="label" for="imagen_ali">Selecciona una imagen</label>

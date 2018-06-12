@@ -19,7 +19,8 @@
             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">            
             <!-- ICONOS Y FUENTES -->
             <link rel="icon" href="../web/images/icon.png" type="image/png">
-            <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
+            <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script> -->
+            <link href="../web/css/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             <!-- ESTILOS -->
             <link rel="stylesheet" href="../web/jquery-ui-1.12.1.custom/jquery-ui.css">

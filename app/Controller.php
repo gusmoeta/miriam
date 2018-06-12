@@ -2,13 +2,16 @@
 
  class Controller{
 
+    //INSERT INTO `usuarios`(`id`, `nombre`, `nombre_google`, `correo`, `contraseña`, `fecha_alta`) VALUES ('17477b24-6ce3-11e8-8495-fcaa140c1e64', 'admin' , null, 'admin@admin.es', '1234', curdate())
+    
     public function registro() {
         $conBD = Model::singleton();
         $usuarios = $conBD->get_usuarios();
         $codigo = uniqid();
-        echo $codigo;
+        //echo $codigo;
         $enviar = true;
-        var_dump($_REQUEST);
+        //var_dump($_REQUEST);
+        $usuarios_temp = $conBD->get_usuarios_temp();
         foreach($usuarios as $usuario){
             if ($usuario['nombre'] == $_POST['nombre']){
                 $mensaje = "Ese nombre de usuario ya está en uso.";
@@ -24,7 +27,21 @@
                 $enviar = false;
             }
         }            
-
+        foreach($usuarios_temp as $usuario){
+            if ($usuario['nombre'] == $_POST['nombre']){
+                $mensaje = "Ese nombre de usuario ya está en uso.";
+                $enviar = false;
+            }elseif ($usuario['correo'] == $_POST['email']){
+                $mensaje = "Ya existe un usuario con ese email.";
+                $enviar = false;
+            }elseif ($_POST['pass'] != $_POST['passr']){
+                $mensaje = "Las contraseñas no coinciden.";
+                $enviar = false;
+            }elseif (empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['passr'])){
+                $mensaje = "Todos los campos son obligatios.";
+                $enviar = false;
+            }
+        }            
         if($enviar){
             $mensaje = "";
             $conBD->inserta_usuario_temp($_POST['nombre'], $_POST['email'], $_POST['pass'], $codigo);
@@ -74,7 +91,8 @@
     }
 
 
-    public function identificacion() {        
+    public function identificacion() {   
+        $mensaje = " ";     
          require __DIR__ . '/templates/identificacion.php';        
     }
 
@@ -104,6 +122,7 @@
     }*/
 
     //OPCIONES DE USUARIO
+
     public function perfil_usuario() {
         $params = array("titulo" => "Perfil de usuario");
         $success = " ";
@@ -157,7 +176,8 @@
         $mensaje = " ";
         $conBD = Model::singleton();
         $res = $conBD->eliminar_user($_SESSION["id_usuario"]);
-        header('refresh:1;url=index.php?ctl=identificacion');    
+        
+        header('refresh:5;url=index.php?ctl=identificacion');    
     }
 
 
@@ -191,36 +211,22 @@
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $nombre_img = self::subir_img($_FILES['imagen_ali']['tmp_name']);
-                //$fecha = $_POST['fecha_cad'];
-                //$fecha_format = date_create_from_format('Y-m-d', $_POST['fecha_cad']);
-                //$fecha_cad = date_format($fecha_format, 'Y-m-d');
-
-                $fecha_cad = date("Y-m-d", strtotime($_POST['fecha_cad']));
-                
-                
-                //quizas con uno solo valdria, solo habria q comporbar  si viene congelado vacio o no y si es vacio ponerlo a null
+                $fecha_cad = date("Y-m-d", strtotime($_POST['fecha_cad']));          
                 if( !isset($_POST['fecha_con']) || empty($_POST['fecha_con']) ){
                     $conBD->insertar_alimento($_POST['nombre_ali'], $_POST['categoria'],
                         $_POST['tipo'], $fecha_cad, $nombre_img, $_SESSION['id_usuario']);                          
                 }else{
-
                     $fecha_con = date("Y-m-d", strtotime($_POST['fecha_con']));
-                    //si es congelado la fecha cad no importa, de momento ponemosuna fecha automatica por defecto
-                    //tb podria hacer el por defecto en la propia funcion
-                    //$fecha_cad = "3000-01-01";
-                    $fecha_cad = $_POST['fecha_cad'];
-                    
+                    $fecha_cad = $_POST['fecha_cad'];                    
                     $conBD->insertar_alimento_ConFechaCongelado($_POST['nombre_ali'], $_POST['categoria'],
-                        $_POST['tipo'], $fecha_cad, $fecha_con, $nombre_img, $_SESSION['id_usuario']);                          
-                        
+                    $_POST['tipo'], $fecha_cad, $fecha_con, $nombre_img, $_SESSION['id_usuario']);                  
                 }
 
-                //header('refresh:3;url=index.php?ctl=anadir_alimento');
         }
         require __DIR__ . '/templates/anadir_alimento.php';        
     }
 
-    public function subir_img($img) {
+    public function subir_img() {
         define("CREAR_DIR", "fotos"); 
 		define("DIRECTORIO", "fotos/");	
 
@@ -229,7 +235,7 @@
 		}
 
 		if (!is_uploaded_file($_FILES['imagen_ali']['tmp_name'])) {
-            echo "hola";///////
+            echo "prueba";///////
 		}else{
             move_uploaded_file($_FILES['imagen_ali']['tmp_name'], DIRECTORIO . $_FILES['imagen_ali']['name']);
             $nombre_img = $_FILES['imagen_ali']['name'];
@@ -254,12 +260,8 @@
                 $numCamposElementosLlenos++;
             }
         }
-
         //echo "$numCamposElementosLlenos numeo camps <br>";
-
-
         $id_user   = $_SESSION['id_usuario'];
-
         $cat       = $_REQUEST['categoria'];
         $tipo      = $_REQUEST['tipo'];
         $fecha_ini = $_REQUEST['fecha_ini'];
@@ -269,7 +271,6 @@
         $sentenciaIncompleta1 = "select * from alimentos_users where id_usuario = '$id_user'"; 
         //solo cuatro posibilidades o 4 elementos
         switch ($numCamposElementosLlenos) {
-
             case 1:
                 switch(true)
                 {
@@ -294,8 +295,7 @@
                         $sentenciaIncompleta2 = "and fecha_caducidad = '$fecha_ini'";
                         $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
 
-                        $params = array("titulo" => "FiltrarDatos1/3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) ); 
-                         
+                        $params = array("titulo" => "FiltrarDatos1/3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ) );                          
                     break;                
                     default:                        
                         //echo "switch1 <br>";
@@ -341,10 +341,8 @@
                     //echo "switch2 <br>";
                     header('refresh:0;url=index.php?ctl=filtrar');
                     exit;
-                }
-            
-            break;
-                
+                }            
+            break;                
             case 3:
                 switch(true){
                     case !empty( $_REQUEST['categoria']) && !empty($_REQUEST['tipo']) && !empty($_REQUEST['fecha_ini']):
@@ -353,47 +351,33 @@
                         $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
 
                         $params = array("titulo" => "FiltrarDatos3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ));  
-
                     break;
-
                     default:
                     //echo "switch3 <br>";
                     header('refresh:0;url=index.php?ctl=filtrar');
                     exit;
-                }
-                
-            break;
-            
+                }                
+            break;            
             case 4:
                 switch(true){
                     case !empty( $_REQUEST['categoria']) && !empty($_REQUEST['tipo']) && !empty($_REQUEST['fecha_ini']) && !empty($_REQUEST['fecha_fin']):
 
                         $sentenciaIncompleta2 = "and id_tipo = '$tipo' and id_categoria = '$cat' and fecha_caducidad = '$fecha_ini' and ( fecha_caducidad BETWEEN CAST('$fecha_ini' AS DATE) AND CAST('$fecha_fin' AS DATE) ) " ; 
                         $sentencia = $sentenciaIncompleta1 . $sentenciaIncompleta2;
-
                         $params = array("titulo" => "FiltrarDatos3", "resultado"=> $conBD->resultadosFiltrados( $sentencia ));    
                     break;
-
                     default:
                     //echo "switch4 <br>";
                     header('refresh:0;url=index.php?ctl=filtrar');
                     exit;
-                }
-
-                          
-            break;
-            
+                }                          
+            break;            
             default:
                     //si no coincide el num param (o es 0) redirige a filtrar
                     //echo "switch  general <br>";
                     header('refresh:0;url=index.php?ctl=filtrar');
-                    exit;
-                
-
-           //
-            
+                    exit;                                       
         }
-
         require __DIR__ . '/templates/filtrarDatos.php';        
     }
 
@@ -466,10 +450,7 @@
         $params = array("titulo" => "Editar alimento", "tipos" => $conBD->get_tipos(), "categorias" => $conBD->get_categorias($_SESSION['id_usuario']),
             "alimento" => $conBD->get_alimento($_REQUEST['id_ali'], $_SESSION['id_usuario'])
         );        
-        //var_dump($params);
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                //$nombre_img = self::subir_img($_FILES['imagen_ali']['tmp_name']);
                 $fecha_cad = date("Y-m-d", strtotime($_POST['fecha_cad']));
                 
                 if (!isset($_FILES['imagen_ali']['tmp_name']) || empty($_FILES['imagen_ali']['tmp_name'])) {
@@ -477,31 +458,19 @@
                 }else{
                     $nombre_img = self::subir_img($_FILES['imagen_ali']['tmp_name']);
                 }
-                
-                //quizas con uno solo valdria, solo habria q comporbar  si viene congelado vacio o no y si es vacio ponerlo a null
-                if (!isset($_POST['fecha_con']) || empty($_POST['fecha_con'])) {
+                                if (!isset($_POST['fecha_con']) || empty($_POST['fecha_con'])) {
                     $conBD->editar_alimento($_POST['nombre_ali'], $_POST['categoria'],
                         $_POST['tipo'], $fecha_cad, $nombre_img, $_SESSION['id_usuario'], $_POST['id_ali']);  
                         //header('refresh:0;url=index.php?ctl=inicio');                        
                 }else{
 
                     $fecha_con = date("Y-m-d", strtotime($_POST['fecha_con']));
-                    //si es congelado la fecha cad no importa, de momento ponemosuna fecha automatica por defecto
-                    //tb podria hacer el por defecto en la propia funcion
-                    //$fecha_cad = "3000-01-01";
                     $fecha_cad = $_POST['fecha_cad'];                    
                     $conBD->editar_alimento($_POST['nombre_ali'], $_POST['categoria'],
                         $_POST['tipo'], $fecha_cad, $fecha_con, $nombre_img, $_SESSION['id_usuario'], $_POST['id_ali']);                           
-                        //header('refresh:0;url=index.php?ctl=inicio');
                 }
-
-                        // var_dump($_POST);
-                        // var_dump($_POST['fecha_cad']);
-                        // var_dump($fecha_cad);
-                //header('refresh:3;url=index.php?ctl=anadir_alimento');
         }
         require __DIR__ . '/templates/editar_alimento.php';    
-        //no redirigir a editar alimento sino a header inicio!!!   
     }
 
     public function categorias() {
@@ -524,118 +493,13 @@
         $params = array("titulo" => "Ajustes");
         require __DIR__ . '/templates/ajustes.php';        
     }
-    
-  
-
-
-
-
-    //EJEMPLOS ALIMENTOS
-    /*public function insertarx(){
-        $params = array(
-            'x' => '',
-         );
-
-        $conBD = Model::singleton();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            // comprobar campos formulario
-            if ($conBD->validarDatos($_POST['x'])) {              
-                   
-                    $conBD->insertarAlimento($_POST['x']);
-                    header('Location: index.php?ctl=listar');
-                        
-            } else {
-                
-                $params = array(
-                    'x' => $_POST['x'],
-                );
-                $params['mensaje'] = '<span>Has introducido valores incorrectos o el alimento ya existe.</span>';
-                 
-            }
-        }
-
-        require __DIR__ . '/templates/formInsertar.php';
-    }
-
-    public function buscar_x(){
-       
-        $params = array(
-        'x' => '',
-        'resultado' => array(),
-        );
-        $conBD = Model::singleton();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $params['x'] = $_POST['x'];
-            $params['resultado'] = $conBD->buscarx($_POST['x']);
-        }
-
-        $nom_alimentos = $conBD->autocompletar();
-        
-        //var_dump($nom_alimentos);
-        require __DIR__ . '/templates/buscarx.php';
-    }
-
-    public function verEliminar(){
-
-        $conBD = Model::singleton();
-        $params = array(
-        'resultado' => $conBD->dameAlimentos(),
-        );
-        //$alimento = $conBD->borrarAlimento($_GET['id']);
-        require __DIR__ . '/templates/verTablaeliminar.php';
-    }
-
-    public function eliminarxxxxx(){
-
-        if (!isset($_POST['id'])) {
-            throw new Exception('Página no encontrada');
-        }
-        $id = $_POST['id'];
-
-        $conBD = Model::singleton();
-        $conBD->borrarAlimento($id);
-        $params = self::verEliminar();
-        //require __DIR__ . '/templates/verTablaeliminar.php';
-    }
-
-
-    public function verModificar(){
-
-        $conBD = Model::singleton();
-        $params = array(
-        'resultado' => $conBD->dameAlimentos(),
-        );
-        $conBD->modificarAlimento($_REQUEST);
-        require __DIR__ . '/templates/mostrarModificar.php';
-    }
-
-    public function modificar(){
-
-        $conBD = Model::singleton();
-        $conBD->modificarAlimento($_REQUEST);
-        $params = array(
-        'resultado' => $conBD->dameAlimentos(),
-        );
-        
-        require __DIR__ . '/templates/mostrarModificar.php';
-    }*/
 
     public function cerrarSession(){
-
-        //como el formu identificacion tiene un control en los inputs, aunq la sesion siga abierta al no 
-        //ser borrada con la cookie, no permite entrar sin mas al darle al enviar, pero podria ser saltado quizas.
-       // session_start();
-        session_destroy();
-        //setcookie("PHPSESSID","",time()); //no ve aki, en claaes funcionba
-        // var_dump(session_name());
-        // var_dump(session_id());  //devuelve valor coockie
-        unset($_COOKIE['PHPSESSID']); //se presupone q borra la coocki pero solo la inicializa otro valor, tb esta bien
-        // var_dump(session_name());
-        // var_dump(session_id());  //devuelve valor coockie
-        $mensaje = "Session cerrada"; //o dejarlo vacio o cambiar la impresion del mensaje a otro lugar, quiza arriba derecha
-        include_once __DIR__ . '/../app/templates/identificacion.php'; 
-        // var_dump($_SESSION);
+       
+        session_destroy();       
+        unset($_COOKIE['PHPSESSID']); 
+        $mensaje = "Session cerrada"; 
+        include_once __DIR__ . '/templates/identificacion.php';         
     }
   
 

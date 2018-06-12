@@ -2,7 +2,7 @@
 <?php //if(session_status() !== PHP_SESSION_ACTIVE){ session_start(); }?> 	
 <div class="barra">
 	<div class="logo">
-		<h2>CADUCALIA</h2><img src="../web/images/logo.png">
+		<h2>CADUCALI</h2><img src="../web/images/logo.png">
 	</div>
 </div>
 	<div class="tabs">

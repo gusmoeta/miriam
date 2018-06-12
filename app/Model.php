@@ -38,8 +38,8 @@ class Model{
 
     public function inserta_usuario_temp($n, $e, $c, $co) {
         try{
-            $sql = "insert into usuarios_temporal (id, nombre, correo, contraseña, fecha_reg_temp, codigo) 
-                    values (UUID(), :n, :e, :c, curdate(), :co)";
+            $sql = "insert into usuarios_temporal (id, nombre, correo, contraseña, fecha_reg_temp, codigo, hora_reg) 
+                    values (UUID(), :n, :e, :c, curdate(), :co, curtime())";
             $consulta = $this->conexion->prepare($sql);
             $consulta->execute(array(":n" => $n, ":e" => $e, ":c" => $c, ":co" => $co));
             $consulta->closeCursor();
@@ -81,6 +81,21 @@ class Model{
         $sql = "select * from usuarios_temporal where codigo = :c";
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute(array(":c" => $c));
+        $res = array();        
+        if ($consulta->rowCount()>0) {
+            while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {
+                $res[]=$registro;
+            }
+        }else{
+            $res = "No hay registros en esta tabla";
+        }
+        return $res;
+    }
+
+    public function get_usuarios_temp(){
+        $sql = "select * from usuarios_temporal";
+        $consulta = $this->conexion->prepare($sql);
+        $consulta->execute();
         $res = array();        
         if ($consulta->rowCount()>0) {
             while ($registro=$consulta->fetch(PDO::FETCH_ASSOC)) {

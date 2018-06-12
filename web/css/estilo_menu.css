@@ -88,6 +88,7 @@ header nav ul li a i {
     margin: 0;
     position: fixed;
     overflow: auto;
+    height: 90%;
     background-color: #F5F5F5;
     z-index: 1;
    
@@ -216,17 +217,19 @@ header nav ul li:first-child a:hover {
   #contenido{    
     width: 100%;
     margin: auto;
+    position: relative;
+    top:50px;
   }  
 }
 
 
-@media screen and (max-width: 1166) {
+/* @media screen and (max-width: 1166px) {
   #contenido{    
     width: 80%;
     clear:both;
     margin-left: 500px;
   } 
- }
+ } */
 /* #contenido {
   display: inline-block;
   position: relative;
@@ -303,7 +306,7 @@ input[type="search"] {
 }
 
 @media screen and (max-width: 950px) {
-  .buscar2 {
+  .content-buscar2 {
     display: none;
   }
 
@@ -329,5 +332,14 @@ input[type="search"] {
     width: 60%;
     padding: 5px 0;
     border-bottom: 0.8px solid #DCEDC8;
+  }
+
+  .constru img{
+    width: 280px;
+  }
+
+  .constru {
+    width: 300px;
+    margin: auto;
   }
 }

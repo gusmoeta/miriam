@@ -35,7 +35,7 @@
 								<label class="label" for="fecha_cad">Fecha de caducidad</label>
 							</div>
 							<div class="input-group">
-								<input type="file" name="imagen_ali" id="imagen_ali" required>
+								<input type="file" name="imagen_ali" id="imagen_ali"  style="color: #757575" required>
 								<label class="label" for="imagen_ali">Selecciona una imagen</label>
 							</div>
 							<!-- <div class="btn-input"  id="demo-success"> -->
