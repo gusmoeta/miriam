@@ -389,7 +389,7 @@
             "titulo" => "Caducados", 
             "resultado" => $conBD->get_alimentos($_SESSION['id_usuario']));
         require __DIR__ . '/templates/caducados.php';        
-        self::mandar_mail_caducidad();
+        //self::mandar_mail_caducidad();
     }
 
     public function mandar_mail_caducidad() {
